@@ -11,11 +11,8 @@ import SwiftUI
 struct SignUpView: View {
   var body: some View {
     VStack{
-      Spacer()
-      
-      Text("This is the Sign Up View!").font(.title)
-      
-      Spacer()
+      Text("This is the Sign Up View!")
+        .font(.title)
     }
   }
 }

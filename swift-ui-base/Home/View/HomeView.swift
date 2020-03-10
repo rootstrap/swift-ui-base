@@ -20,8 +20,7 @@ struct HomeView: View {
         
         NavigationLink(destination: LoginView()) {
           Text("Log In")
-            .frame(width: 300,
-                   height: 50)
+            .frame(width: 300, height: 50)
             .font(.subheadline)
             .background(Color.blue)
             .foregroundColor(.white)
@@ -33,8 +32,7 @@ struct HomeView: View {
         
         NavigationLink(destination: SignUpView()) {
           Text("Don't have an account? Lets create one! ►")
-            .frame(width: 300,
-                   height: 50)
+            .frame(width: 300, height: 50)
             .font(.subheadline)
             .foregroundColor(.gray)
             .cornerRadius(8)

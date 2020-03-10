@@ -11,11 +11,8 @@ import SwiftUI
 struct LoginView: View {
   var body: some View {
     VStack{
-      Spacer()
-      
-      Text("This is the Login View!").font(.title)
-      
-      Spacer()
+      Text("This is the Login View!")
+        .font(.title)
     }
   }
 }
