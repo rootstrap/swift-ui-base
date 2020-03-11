@@ -9,11 +9,53 @@
 import SwiftUI
 
 struct LoginView: View {
+  
+  @ObservedObject var emailData = TextFieldData(
+    title: "Email",
+    validationType: .email,
+    errorMessage: "Please enter a valid email"
+  )
+  
+  @ObservedObject var passwordData = TextFieldData(
+    title: "Password",
+    validationType: .nonEmpty,
+    errorMessage: "Please enter a valid password"
+  )
+  
+  var isDataValid: Bool {
+    let data = [emailData, passwordData]
+    return data.filter { !$0.isValid }.isEmpty
+  }
+  
   var body: some View {
     VStack{
-      Text("This is the Login View!")
+      Text("Sign In")
         .font(.title)
+      
+      Spacer()
+      
+      TextFieldView(data: emailData)
+      
+      Spacer().frame(maxHeight: 20)
+      
+      TextFieldView(data: passwordData)
+      
+      Spacer()
+      
+      Button(action: {
+        self.printUserName()
+      }, label: {
+        Text("Sign In")
+          .font(.headline)
+      }).disabled(!isDataValid)
+      
+      Spacer()
     }
+  }
+  
+  func printUserName() {
+    print("username is \(emailData.value)")
+    print("password is \(passwordData.value)")
   }
 }
 
