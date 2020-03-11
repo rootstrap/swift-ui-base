@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		071D6B682419576500571DE9 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D6B672419576500571DE9 /* ColorExtension.swift */; };
+		071D6B6C241976C200571DE9 /* TitleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D6B6B241976C200571DE9 /* TitleModifier.swift */; };
 		07415FE524181D8800486885 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07415FE424181D8800486885 /* SignUpView.swift */; };
 		07415FE9241832E700486885 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07415FE8241832E700486885 /* TextFieldView.swift */; };
 		07415FEC24183A7E00486885 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07415FEB24183A7E00486885 /* StringExtension.swift */; };
@@ -44,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		058C2EECB9E8E4FD7D43885A /* Pods_swift_ui_baseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swift_ui_baseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		071D6B672419576500571DE9 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		071D6B6B241976C200571DE9 /* TitleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleModifier.swift; sourceTree = "<group>"; };
 		07415FE424181D8800486885 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		07415FE8241832E700486885 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		07415FEB24183A7E00486885 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -103,10 +107,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		07415FE62418325A00486885 /* Common */ = {
+		071D6B692419765600571DE9 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				07415FE7241832D000486885 /* TextField */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		071D6B6A2419765B00571DE9 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				071D6B6B241976C200571DE9 /* TitleModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		07415FE62418325A00486885 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				071D6B6A2419765B00571DE9 /* Modifiers */,
+				071D6B692419765600571DE9 /* View */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -124,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				07415FEB24183A7E00486885 /* StringExtension.swift */,
+				071D6B672419576500571DE9 /* ColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -491,6 +513,8 @@
 				07A649FC2417E137003C6753 /* AppDelegate.swift in Sources */,
 				074AADB924192895002C6F85 /* TextFieldData.swift in Sources */,
 				07415FEC24183A7E00486885 /* StringExtension.swift in Sources */,
+				071D6B6C241976C200571DE9 /* TitleModifier.swift in Sources */,
+				071D6B682419576500571DE9 /* ColorExtension.swift in Sources */,
 				07415FE524181D8800486885 /* SignUpView.swift in Sources */,
 				07415FE9241832E700486885 /* TextFieldView.swift in Sources */,
 				07A649FE2417E137003C6753 /* SceneDelegate.swift in Sources */,
