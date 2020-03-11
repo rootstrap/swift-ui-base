@@ -23,8 +23,7 @@ struct LoginView: View {
   )
   
   var isDataValid: Bool {
-    let data = [emailData, passwordData]
-    return data.filter { !$0.isValid }.isEmpty
+    return [emailData, passwordData].allSatisfy { $0.isValid }
   }
   
   var body: some View {
