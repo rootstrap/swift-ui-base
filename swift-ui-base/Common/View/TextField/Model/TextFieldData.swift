@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class TextFieldData: ObservableObject {
+final class TextFieldData: ObservableObject, Identifiable {
   @Published var value: String = "" {
     didSet {
       hasTyped = hasTyped || !value.isEmpty
