@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		07415FE524181D8800486885 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07415FE424181D8800486885 /* SignUpView.swift */; };
+		07415FE9241832E700486885 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07415FE8241832E700486885 /* TextFieldView.swift */; };
+		07415FEC24183A7E00486885 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07415FEB24183A7E00486885 /* StringExtension.swift */; };
+		074AADB924192895002C6F85 /* TextFieldData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074AADB824192895002C6F85 /* TextFieldData.swift */; };
 		079BE4DC241816F700241627 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079BE4DB241816F700241627 /* LoginView.swift */; };
 		07A649FC2417E137003C6753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A649FB2417E137003C6753 /* AppDelegate.swift */; };
 		07A649FE2417E137003C6753 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A649FD2417E137003C6753 /* SceneDelegate.swift */; };
@@ -42,6 +45,9 @@
 /* Begin PBXFileReference section */
 		058C2EECB9E8E4FD7D43885A /* Pods_swift_ui_baseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swift_ui_baseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07415FE424181D8800486885 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		07415FE8241832E700486885 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		07415FEB24183A7E00486885 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		074AADB824192895002C6F85 /* TextFieldData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldData.swift; sourceTree = "<group>"; };
 		079BE4DB241816F700241627 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		07A649F82417E137003C6753 /* swift-ui-base.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-ui-base.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07A649FB2417E137003C6753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +103,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07415FE62418325A00486885 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				07415FE7241832D000486885 /* TextField */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		07415FE7241832D000486885 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				074AADB72419286F002C6F85 /* View */,
+				074AADB62419286A002C6F85 /* Model */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		07415FEA24183A2700486885 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				07415FEB24183A7E00486885 /* StringExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		074AADB62419286A002C6F85 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				074AADB824192895002C6F85 /* TextFieldData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		074AADB72419286F002C6F85 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				07415FE8241832E700486885 /* TextFieldView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		079BE4D7241816B100241627 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +204,8 @@
 			children = (
 				07A649FB2417E137003C6753 /* AppDelegate.swift */,
 				07A649FD2417E137003C6753 /* SceneDelegate.swift */,
+				07415FEA24183A2700486885 /* Extensions */,
+				07415FE62418325A00486885 /* Common */,
 				079BE4D9241816C800241627 /* Authentication */,
 				079BE4D7241816B100241627 /* Home */,
 				07A64A012417E13A003C6753 /* Assets.xcassets */,
@@ -440,7 +489,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				07A649FC2417E137003C6753 /* AppDelegate.swift in Sources */,
+				074AADB924192895002C6F85 /* TextFieldData.swift in Sources */,
+				07415FEC24183A7E00486885 /* StringExtension.swift in Sources */,
 				07415FE524181D8800486885 /* SignUpView.swift in Sources */,
+				07415FE9241832E700486885 /* TextFieldView.swift in Sources */,
 				07A649FE2417E137003C6753 /* SceneDelegate.swift in Sources */,
 				079BE4DC241816F700241627 /* LoginView.swift in Sources */,
 				07A64A002417E137003C6753 /* HomeView.swift in Sources */,
