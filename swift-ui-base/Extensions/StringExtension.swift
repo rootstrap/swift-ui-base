@@ -19,7 +19,7 @@ enum ValidationType {
 
 extension String {
   var isAlphanumericWithNoSpaces: Bool {
-    return rangeOfCharacter(from: CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789").inverted) == nil
+    return rangeOfCharacter(from: CharacterSet.alphanumerics.inverted) == nil
   }
   
   var hasPunctuationCharacters: Bool {

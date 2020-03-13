@@ -10,10 +10,8 @@ import SwiftUI
 
 struct SignUpView: View {
   var body: some View {
-    VStack{
-      Text("This is the Sign Up View!")
-        .font(.title)
-    }
+    Text("This is the Sign Up View!")
+      .modifier(TitleModifier())
   }
 }
 

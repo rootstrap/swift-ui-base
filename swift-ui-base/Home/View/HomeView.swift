@@ -14,7 +14,8 @@ struct HomeView: View {
       VStack {
         Spacer()
         
-        Text("Welcome to RS SwiftUI base!").font(.title)
+        Text("Welcome to RS SwiftUI base!")
+          .modifier(TitleModifier())
         
         Spacer()
         

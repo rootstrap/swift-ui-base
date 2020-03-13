@@ -19,8 +19,11 @@ struct LoginView: View {
   @ObservedObject var passwordData = TextFieldData(
     title: "Password",
     validationType: .nonEmpty,
+    isSecure: true,
     errorMessage: "Please enter a valid password"
   )
+  
+  @State private var isShowingAlert = false
   
   var isDataValid: Bool {
     return [emailData, passwordData].allSatisfy { $0.isValid }
@@ -29,32 +32,33 @@ struct LoginView: View {
   var body: some View {
     VStack{
       Text("Sign In")
-        .font(.title)
+        .modifier(TitleModifier())
       
       Spacer()
       
       TextFieldView(data: emailData)
       
-      Spacer().frame(maxHeight: 20)
+      Spacer().frame(height: 30)
       
       TextFieldView(data: passwordData)
       
       Spacer()
       
       Button(action: {
-        self.printUserName()
+        self.isShowingAlert = true
       }, label: {
         Text("Sign In")
           .font(.headline)
-      }).disabled(!isDataValid)
+      })
+        .disabled(!isDataValid)
+        .alert(isPresented: $isShowingAlert) {
+          Alert(title: Text("Sign in tapped"),
+                message: Text("username: \(emailData.value) \npassword: \(passwordData.value)"),
+                dismissButton: .default(Text("Got it!")))
+      }
       
       Spacer()
     }
-  }
-  
-  func printUserName() {
-    print("username is \(emailData.value)")
-    print("password is \(passwordData.value)")
   }
 }
 
