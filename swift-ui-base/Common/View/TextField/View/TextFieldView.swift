@@ -61,14 +61,3 @@ struct TextFieldView: View {
     .padding(.horizontal, 20)
   }
 }
-//
-//struct TextFieldView_Previews: PreviewProvider {
-//  static var previews: some View {
-//    TextFieldView(data: TextFieldData(
-//      title: "Email",
-//      value: "jhggjhg",
-//      validationType: .email,
-//      errorMessage: "Please enter a valid email"
-//    ))
-//  }
-//}
