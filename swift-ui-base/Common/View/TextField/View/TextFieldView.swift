@@ -9,32 +9,37 @@
 import SwiftUI
 
 struct TextFieldView: View {
-  @ObservedObject var data = TextFieldData(title: "")
+  @Binding var value: String
+  @Binding var isValid: Bool
+  @Binding var hasTyped: Bool
+  @State var title: String
+  @State var errorMessage: String
+  @State var isSecure = false
   
   var body: some View {
     VStack {
-      if !data.isEmpty {
-        Text(data.title)
+      if !value.isEmpty {
+        Text(title)
           .frame(maxWidth: .infinity, alignment: .leading)
           .font(.subheadline)
           .foregroundColor(.lightGray)
       }
       
       ZStack {
-        if data.value.isEmpty {
-          Text(data.title)
+        if value.isEmpty {
+          Text(title)
             .frame(maxWidth: .infinity, alignment: .leading)
             .font(Font.headline.weight(.regular))
             .foregroundColor(.lightGray)
             .opacity(0.7)
         }
         
-        if data.isSecure {
-          SecureField("", text: $data.value)
+        if isSecure {
+          SecureField("", text: $value)
             .foregroundColor(.darkGray)
             .autocapitalization(.none)
         } else {
-          TextField("", text: $data.value)
+          TextField("", text: $value)
             .foregroundColor(.darkGray)
             .autocapitalization(.none)
             .opacity(0.8)
@@ -43,11 +48,11 @@ struct TextFieldView: View {
       
       Rectangle()
         .frame(maxWidth: .infinity, maxHeight: 1)
-        .foregroundColor(!data.isValid && data.hasTyped ? .errorRed : .lightGray)
+        .foregroundColor(!isValid && hasTyped ? .errorRed : .lightGray)
         .opacity(0.5)
       
-      if !data.isValid && data.hasTyped {
-        Text(data.errorMessage)
+      if !isValid && hasTyped {
+        Text(errorMessage)
           .frame(maxWidth: .infinity, alignment: .leading)
           .font(.footnote)
           .foregroundColor(.errorRed)
@@ -56,14 +61,14 @@ struct TextFieldView: View {
     .padding(.horizontal, 20)
   }
 }
-
-struct TextFieldView_Previews: PreviewProvider {
-  static var previews: some View {
-    TextFieldView(data: TextFieldData(
-      title: "Email",
-      value: "jhggjhg",
-      validationType: .email,
-      errorMessage: "Please enter a valid email"
-    ))
-  }
-}
+//
+//struct TextFieldView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    TextFieldView(data: TextFieldData(
+//      title: "Email",
+//      value: "jhggjhg",
+//      validationType: .email,
+//      errorMessage: "Please enter a valid email"
+//    ))
+//  }
+//}

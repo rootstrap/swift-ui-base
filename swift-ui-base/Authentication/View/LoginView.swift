@@ -10,60 +10,67 @@ import SwiftUI
 
 struct LoginView: View {
   
-  @ObservedObject var emailData = TextFieldData(
-    title: "Email",
-    validationType: .email,
-    errorMessage: "Please enter a valid email"
-  )
-  
-  @ObservedObject var passwordData = TextFieldData(
-    title: "Password",
-    validationType: .nonEmpty,
-    isSecure: true,
-    errorMessage: "Please enter a valid password"
-  )
-  
+  @ObservedObject var viewModel: LoginViewModel
   @State private var isShowingAlert = false
   
-  var isDataValid: Bool {
-    return [emailData, passwordData].allSatisfy { $0.isValid }
+  var body: some View {
+    ZStack {
+      ActivityIndicatorView(isAnimating: $viewModel.isLoading, style: .medium)
+      
+      VStack{
+        Text("Sign In")
+          .modifier(TitleModifier())
+        
+        Spacer()
+        
+        TextFieldView(
+          value: $viewModel.emailData.value,
+          isValid: $viewModel.emailData.isValid,
+          hasTyped: $viewModel.emailData.hasTyped,
+          title: viewModel.emailData.title,
+          errorMessage: viewModel.emailData.errorMessage
+        )
+        
+        Spacer().frame(height: 30)
+        
+        TextFieldView(
+          value: $viewModel.passwordData.value,
+          isValid: $viewModel.passwordData.isValid,
+          hasTyped: $viewModel.passwordData.hasTyped,
+          title: viewModel.passwordData.title,
+          errorMessage: viewModel.passwordData.errorMessage,
+          isSecure: true
+        )
+        
+        Spacer()
+        
+        Button(action: {
+          self.loginButtonTapped()
+        }, label: {
+          Text("Sign In")
+            .font(.headline)
+        })
+          .disabled(!viewModel.isValidData)
+          .alert(isPresented: $isShowingAlert) {
+            Alert(title: Text("Sign in tapped"),
+                  message: Text("username: \(viewModel.emailData.value) \npassword: \(viewModel.passwordData.value)"),
+                  dismissButton: .default(Text("Got it!")))
+        }
+        
+        Spacer()
+      }
+      .disabled(viewModel.isLoading)
+      .blur(radius: viewModel.isLoading ? 3 : 0)
+    }
   }
   
-  var body: some View {
-    VStack{
-      Text("Sign In")
-        .modifier(TitleModifier())
-      
-      Spacer()
-      
-      TextFieldView(data: emailData)
-      
-      Spacer().frame(height: 30)
-      
-      TextFieldView(data: passwordData)
-      
-      Spacer()
-      
-      Button(action: {
-        self.isShowingAlert = true
-      }, label: {
-        Text("Sign In")
-          .font(.headline)
-      })
-        .disabled(!isDataValid)
-        .alert(isPresented: $isShowingAlert) {
-          Alert(title: Text("Sign in tapped"),
-                message: Text("username: \(emailData.value) \npassword: \(passwordData.value)"),
-                dismissButton: .default(Text("Got it!")))
-      }
-      
-      Spacer()
-    }
+  func loginButtonTapped() {
+    viewModel.attemptSignin()
   }
 }
 
 struct LoginView_Previews: PreviewProvider {
   static var previews: some View {
-    LoginView()
+    LoginView(viewModel: LoginViewModel(router: ViewRouter()))
   }
 }

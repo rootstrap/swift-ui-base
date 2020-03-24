@@ -8,8 +8,8 @@
 
 import Foundation
 
-final class TextFieldData: ObservableObject, Identifiable {
-  @Published var value: String = "" {
+final class TextFieldData: Identifiable {
+  var value: String = "" {
     didSet {
       hasTyped = hasTyped || !value.isEmpty
       validate()
@@ -19,11 +19,15 @@ final class TextFieldData: ObservableObject, Identifiable {
   var errorMessage: String
   var title: String
   var isSecure = false
-  @Published var hasTyped = false
-  @Published var isValid = true
+  var hasTyped = false
+  var isValid = true
   
   var isEmpty: Bool {
     return value.isEmpty
+  }
+  
+  deinit {
+    print("deinit called for \(title)")
   }
   
   init(title: String,
@@ -37,6 +41,7 @@ final class TextFieldData: ObservableObject, Identifiable {
     self.errorMessage = errorMessage
     self.isSecure = isSecure
     validate()
+    print("init called for \(title)")
   }
   
   func validate() {
