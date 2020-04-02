@@ -11,7 +11,6 @@ import SwiftUI
 struct LoginView: View {
   
   @ObservedObject var viewModel = LoginViewModel()
-  @State private var isShowingAlert = false
   
   var body: some View {
     NavigationView {
@@ -52,9 +51,9 @@ struct LoginView: View {
               .font(.headline)
           })
             .disabled(!viewModel.isValidData)
-            .alert(isPresented: $isShowingAlert) {
-              Alert(title: Text("Sign in tapped"),
-                    message: Text("username: \(viewModel.emailData.value) \npassword: \(viewModel.passwordData.value)"),
+            .alert(isPresented: $viewModel.errored) {
+              Alert(title: Text("Oops"),
+                    message: Text(viewModel.error),
                     dismissButton: .default(Text("Got it!")))
           }
       
