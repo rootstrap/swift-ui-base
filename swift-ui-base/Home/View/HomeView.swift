@@ -9,51 +9,40 @@
 import SwiftUI
 
 struct HomeView: View {
-  @EnvironmentObject var router: ViewRouter
   
   var body: some View {
-    VStack {
-      Spacer()
-      
-      Text("Welcome to RS SwiftUI base!")
-        .modifier(TitleModifier())
-      
-      Spacer()
-      
-      Button(action: {
-        self.goToLogin()
-      }, label: {
-        Text("Log In")
-          .frame(width: 300, height: 50)
-          .font(.subheadline)
-          .background(Color.blue)
-          .foregroundColor(.white)
-          .cornerRadius(8)
-      })
-      
-      Spacer()
-        .frame(maxHeight: 20)
-      
-      Button(action: {
-        self.goToSignUp()
-      }, label: {
-        Text("Don't have an account? Lets create one! ►")
-          .frame(width: 300, height: 50)
-          .font(.subheadline)
-          .foregroundColor(.gray)
-          .cornerRadius(8)
-      })
-      
-      Spacer()
+    NavigationView {
+      VStack {
+        Spacer()
+        
+        Text("Welcome to RS SwiftUI base!")
+          .modifier(TitleModifier())
+        
+        Spacer()
+        
+        NavigationLink(destination: LoginView()) {
+          Text("Log In")
+            .frame(width: 300, height: 50)
+            .font(.subheadline)
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(8)
+        }
+        
+        Spacer()
+          .frame(maxHeight: 20)
+        
+        NavigationLink(destination: SignUpView()) {
+          Text("Don't have an account? Lets create one! ►")
+            .frame(width: 300, height: 50)
+            .font(.subheadline)
+            .foregroundColor(.gray)
+            .cornerRadius(8)
+        }
+  
+        Spacer()
+      }
     }
-  }
-  
-  func goToLogin() {
-    router.currentScreen = .login
-  }
-  
-  func goToSignUp() {
-    router.currentScreen = .signUp
   }
 }
 

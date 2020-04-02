@@ -9,13 +9,15 @@
 import Foundation
 import Combine
 
-enum Screen {
-  case login
-  case signUp
+enum Roots {
   case home
   case profile
 }
 
 class ViewRouter: ObservableObject {
-  @Published var currentScreen: Screen = .home
+  @Published var currentRoot: Roots = .home
+  
+  static let shared = ViewRouter()
+  
+  fileprivate init() { }
 }

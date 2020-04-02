@@ -19,8 +19,6 @@ enum LoginViewModelState {
 
 class LoginViewModel: ObservableObject, Identifiable {
   
-  var router: ViewRouter
-
   @Published var emailData = TextFieldData(
     title: "Email",
     validationType: .email,
@@ -36,10 +34,6 @@ class LoginViewModel: ObservableObject, Identifiable {
   
   @Published var isLoading = false
   
-  init(router: ViewRouter) {
-    self.router = router
-  }
-  
   var isValidData: Bool {
     return [emailData, passwordData].allSatisfy { $0.isValid }
   }
@@ -49,7 +43,7 @@ class LoginViewModel: ObservableObject, Identifiable {
     
     DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
       self.isLoading = false
-      self.router.currentScreen = .home
+      ViewRouter.shared.currentRoot = .profile
     })
   }
 }
