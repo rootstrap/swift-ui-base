@@ -35,6 +35,8 @@ struct ProfileView: View {
     }
   
   func logout() {
+    UserDataManager.deleteUser()
+    SessionManager.deleteSession()
     ViewRouter.shared.currentRoot = .home
   }
 }
