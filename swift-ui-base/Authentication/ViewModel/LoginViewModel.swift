@@ -33,6 +33,8 @@ class LoginViewModel: ObservableObject, Identifiable {
   )
   
   @Published var isLoading = false
+  @Published var errored = false
+  var error: String = ""
   
   var isValidData: Bool {
     return [emailData, passwordData].allSatisfy { $0.isValid }
@@ -41,9 +43,17 @@ class LoginViewModel: ObservableObject, Identifiable {
   func attemptSignin() {
     isLoading = true
     
-    DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-      self.isLoading = false
-      ViewRouter.shared.currentRoot = .profile
-    })
+    LoginServices.login(
+      emailData.value,
+      password: passwordData.value,
+      success: { [weak self] in
+        self?.isLoading = false
+        ViewRouter.shared.currentRoot = .profile
+      },
+      failure: { [weak self] error in
+        self?.isLoading = false
+        self?.errored = true
+        self?.error = error.localizedDescription
+      })
   }
 }

@@ -18,6 +18,18 @@
 		0749E1B0242A743300340F8B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749E1AF242A743300340F8B /* ProfileView.swift */; };
 		074AADB924192895002C6F85 /* TextFieldData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074AADB824192895002C6F85 /* TextFieldData.swift */; };
 		074B1440241AC6ED000CFFA0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B143F241AC6ED000CFFA0 /* LoginViewModel.swift */; };
+		0768431F2434D9B40052FD64 /* LoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0768431E2434D9B40052FD64 /* LoginServices.swift */; };
+		076843222434DF8C0052FD64 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076843212434DF8C0052FD64 /* Session.swift */; };
+		076843242434DFBC0052FD64 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076843232434DFBC0052FD64 /* DictionaryExtension.swift */; };
+		076843262434DFD30052FD64 /* HTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076843252434DFD30052FD64 /* HTTPHeader.swift */; };
+		076843292434E03B0052FD64 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076843282434E03B0052FD64 /* SessionManager.swift */; };
+		0768432C2434E0D20052FD64 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0768432B2434E0D20052FD64 /* ConfigurationManager.swift */; };
+		0768432E2434E5170052FD64 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0768432D2434E5170052FD64 /* APIClient.swift */; };
+		076843302434E6660052FD64 /* MultipartMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0768432F2434E6660052FD64 /* MultipartMedia.swift */; };
+		076843322434E6B70052FD64 /* Base64Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076843312434E6B70052FD64 /* Base64Media.swift */; };
+		076843372434FFC70052FD64 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076843362434FFC70052FD64 /* App.swift */; };
+		07684339243523740052FD64 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07684338243523740052FD64 /* UserDataManager.swift */; };
+		0768433B243523AF0052FD64 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0768433A243523AF0052FD64 /* User.swift */; };
 		079BE4DC241816F700241627 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079BE4DB241816F700241627 /* LoginView.swift */; };
 		07A649FC2417E137003C6753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A649FB2417E137003C6753 /* AppDelegate.swift */; };
 		07A649FE2417E137003C6753 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A649FD2417E137003C6753 /* SceneDelegate.swift */; };
@@ -62,6 +74,18 @@
 		0749E1AF242A743300340F8B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		074AADB824192895002C6F85 /* TextFieldData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldData.swift; sourceTree = "<group>"; };
 		074B143F241AC6ED000CFFA0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		0768431E2434D9B40052FD64 /* LoginServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServices.swift; sourceTree = "<group>"; };
+		076843212434DF8C0052FD64 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		076843232434DFBC0052FD64 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		076843252434DFD30052FD64 /* HTTPHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeader.swift; sourceTree = "<group>"; };
+		076843282434E03B0052FD64 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		0768432B2434E0D20052FD64 /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
+		0768432D2434E5170052FD64 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		0768432F2434E6660052FD64 /* MultipartMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartMedia.swift; sourceTree = "<group>"; };
+		076843312434E6B70052FD64 /* Base64Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64Media.swift; sourceTree = "<group>"; };
+		076843362434FFC70052FD64 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		07684338243523740052FD64 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		0768433A243523AF0052FD64 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		079BE4DB241816F700241627 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		07A649F82417E137003C6753 /* swift-ui-base.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-ui-base.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07A649FB2417E137003C6753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,18 +150,20 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		071D6B6A2419765B00571DE9 /* Modifiers */ = {
+		071D6B6A2419765B00571DE9 /* Modifier */ = {
 			isa = PBXGroup;
 			children = (
 				071D6B6B241976C200571DE9 /* TitleModifier.swift */,
 			);
-			path = Modifiers;
+			path = Modifier;
 			sourceTree = "<group>";
 		};
 		07415FE62418325A00486885 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				071D6B6A2419765B00571DE9 /* Modifiers */,
+				076843352434FFBD0052FD64 /* Model */,
+				0768432A2434E0BE0052FD64 /* Manager */,
+				071D6B6A2419765B00571DE9 /* Modifier */,
 				071D6B692419765600571DE9 /* View */,
 			);
 			path = Common;
@@ -157,6 +183,7 @@
 			children = (
 				07415FEB24183A7E00486885 /* StringExtension.swift */,
 				071D6B672419576500571DE9 /* ColorExtension.swift */,
+				076843232434DFBC0052FD64 /* DictionaryExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -216,6 +243,62 @@
 				074B143F241AC6ED000CFFA0 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0768431B2434D9520052FD64 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				076843272434E01C0052FD64 /* Manager */,
+				0768431D2434D9960052FD64 /* Service */,
+				0768431C2434D98B0052FD64 /* Model */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		0768431C2434D98B0052FD64 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				076843212434DF8C0052FD64 /* Session.swift */,
+				076843252434DFD30052FD64 /* HTTPHeader.swift */,
+				0768432F2434E6660052FD64 /* MultipartMedia.swift */,
+				076843312434E6B70052FD64 /* Base64Media.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0768431D2434D9960052FD64 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0768431E2434D9B40052FD64 /* LoginServices.swift */,
+				0768432D2434E5170052FD64 /* APIClient.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		076843272434E01C0052FD64 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				076843282434E03B0052FD64 /* SessionManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		0768432A2434E0BE0052FD64 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0768432B2434E0D20052FD64 /* ConfigurationManager.swift */,
+				07684338243523740052FD64 /* UserDataManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		076843352434FFBD0052FD64 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				076843362434FFC70052FD64 /* App.swift */,
+				0768433A243523AF0052FD64 /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		079BE4D7241816B100241627 /* Home */ = {
@@ -284,6 +367,7 @@
 				07415FE62418325A00486885 /* Common */,
 				079BE4D9241816C800241627 /* Authentication */,
 				079BE4D7241816B100241627 /* Home */,
+				0768431B2434D9520052FD64 /* Networking */,
 				07442D0D241C169F00A235E7 /* Navigation */,
 				07A64A012417E13A003C6753 /* Assets.xcassets */,
 				07A64A062417E13A003C6753 /* LaunchScreen.storyboard */,
@@ -566,19 +650,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				07A649FC2417E137003C6753 /* AppDelegate.swift in Sources */,
+				076843222434DF8C0052FD64 /* Session.swift in Sources */,
 				07442D13241C189300A235E7 /* ViewRouter.swift in Sources */,
 				074AADB924192895002C6F85 /* TextFieldData.swift in Sources */,
 				074B1440241AC6ED000CFFA0 /* LoginViewModel.swift in Sources */,
+				0768433B243523AF0052FD64 /* User.swift in Sources */,
+				076843302434E6660052FD64 /* MultipartMedia.swift in Sources */,
+				0768432E2434E5170052FD64 /* APIClient.swift in Sources */,
 				07442D0B241C08E700A235E7 /* ActivityIndicatorView.swift in Sources */,
 				07415FEC24183A7E00486885 /* StringExtension.swift in Sources */,
 				071D6B6C241976C200571DE9 /* TitleModifier.swift in Sources */,
+				076843322434E6B70052FD64 /* Base64Media.swift in Sources */,
 				0749E1B0242A743300340F8B /* ProfileView.swift in Sources */,
+				076843372434FFC70052FD64 /* App.swift in Sources */,
+				076843242434DFBC0052FD64 /* DictionaryExtension.swift in Sources */,
+				0768431F2434D9B40052FD64 /* LoginServices.swift in Sources */,
 				071D6B682419576500571DE9 /* ColorExtension.swift in Sources */,
 				07415FE524181D8800486885 /* SignUpView.swift in Sources */,
 				07415FE9241832E700486885 /* TextFieldView.swift in Sources */,
 				07442D11241C186100A235E7 /* RootView.swift in Sources */,
 				07A649FE2417E137003C6753 /* SceneDelegate.swift in Sources */,
+				07684339243523740052FD64 /* UserDataManager.swift in Sources */,
 				079BE4DC241816F700241627 /* LoginView.swift in Sources */,
+				0768432C2434E0D20052FD64 /* ConfigurationManager.swift in Sources */,
+				076843262434DFD30052FD64 /* HTTPHeader.swift in Sources */,
+				076843292434E03B0052FD64 /* SessionManager.swift in Sources */,
 				07A64A002417E137003C6753 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -745,6 +841,7 @@
 			baseConfigurationReference = B7E08AE950716555C03268DA /* Pods-swift-ui-base.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BASE_URL = "https://rails5-api-base.herokuapp.com/api/v1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"swift-ui-base/Preview Content\"";
 				DEVELOPMENT_TEAM = V9839GT2TL;
@@ -766,6 +863,7 @@
 			baseConfigurationReference = 12653AEF26E8044C6B61E1ED /* Pods-swift-ui-base.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BASE_URL = "https://rails5-api-base.herokuapp.com/api/v1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"swift-ui-base/Preview Content\"";
 				DEVELOPMENT_TEAM = V9839GT2TL;
