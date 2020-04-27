@@ -129,7 +129,7 @@ class APIClient {
   //If your API requires this header do not use this method or change backend to skip this validation.
   class func multipartRequest(_ method: HTTPMethod = .post,
                               url: String,
-                              headers: [String: String]? = nil,
+                              headers: [String: String] = APIClient.getHeaders(),
                               params: [String: Any]?,
                               paramsRootKey: String,
                               media: [MultipartMedia],
@@ -139,7 +139,7 @@ class APIClient {
     let requestConvertible = BaseURLRequestConvertible(
       path: url,
       method: method,
-      headers: headers ?? APIClient.getHeaders()
+      headers: headers
     )
   
     AF.upload(
@@ -150,7 +150,7 @@ class APIClient {
         for elem in media {
           elem.embed(inForm: multipartForm)
         }
-    },
+      },
       with: requestConvertible)
     .responseJSON(completionHandler: { result in
       validateResult(result: result, success: success, failure: failure)

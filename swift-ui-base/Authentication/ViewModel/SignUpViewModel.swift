@@ -40,7 +40,7 @@ class SignUpViewModel: ObservableObject, Identifiable {
   }
   
   var isValidData: Bool {
-    return [emailData, passwordData].allSatisfy { $0.isValid }
+    return [emailData, passwordData, confirmPasswordData].allSatisfy { $0.isValid }
   }
   
   func passwordsMatch() -> Bool {
@@ -53,7 +53,7 @@ class SignUpViewModel: ObservableObject, Identifiable {
   
   func attemptSingUp() {
     isLoading = true
-    LoginServices.signup(
+    AuthenticationServices.signup(
       emailData.value,
       password: passwordData.value,
       avatar64: UIImage.random(),

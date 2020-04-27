@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LoginServices {
+class AuthenticationServices {
   
   fileprivate static let usersUrl = "/users/"
   fileprivate static let currentUserUrl = "/user/"
@@ -26,7 +26,7 @@ class LoginServices {
       ]
     ]
     APIClient.request(.post, url: url, params: parameters, success: { response, headers in
-      LoginServices.saveUserSession(fromResponse: response, headers: headers)
+      AuthenticationServices.saveUserSession(fromResponse: response, headers: headers)
       success()
     }, failure: { error in
       failure(error)
@@ -58,7 +58,7 @@ class LoginServices {
       paramsRootKey: "",
       media: [image],
       success: { response, headers in
-        LoginServices.saveUserSession(fromResponse: response, headers: headers)
+        AuthenticationServices.saveUserSession(fromResponse: response, headers: headers)
         success(UserDataManager.currentUser)
       },
       failure: failure
@@ -86,7 +86,7 @@ class LoginServices {
       url: usersUrl,
       params: parameters,
       success: { response, headers in
-        LoginServices.saveUserSession(fromResponse: response, headers: headers)
+        AuthenticationServices.saveUserSession(fromResponse: response, headers: headers)
         success(UserDataManager.currentUser)
       },
       failure: failure
