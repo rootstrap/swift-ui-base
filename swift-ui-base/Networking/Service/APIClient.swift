@@ -58,7 +58,7 @@ class BaseURLRequestConvertible: URLRequestConvertible {
        method: HTTPMethod,
        encoding: ParameterEncoding? = nil,
        params: [String: Any]? = nil,
-       headers: [String: String] = APIClient.getHeaders() ?? [:]) {
+       headers: [String: String] = [:]) {
     url = BaseURLConvertible(path: path, baseUrl: baseUrl)
     self.method = method
     self.headers = HTTPHeaders(headers)
@@ -87,7 +87,7 @@ class APIClient {
   static let baseHeaders: [String: String] = [HTTPHeader.accept.rawValue: "application/json",
                                               HTTPHeader.contentType.rawValue: "application/json"]
   
-  fileprivate class func getHeaders() -> [String: String]? {
+  fileprivate class func getHeaders() -> [String: String] {
     if let session = SessionManager.currentSession {
       return baseHeaders + [
         HTTPHeader.uid.rawValue: session.uid ?? "",
@@ -129,14 +129,18 @@ class APIClient {
   //If your API requires this header do not use this method or change backend to skip this validation.
   class func multipartRequest(_ method: HTTPMethod = .post,
                               url: String,
-                              headers: [String: String]? = nil,
+                              headers: [String: String] = APIClient.getHeaders(),
                               params: [String: Any]?,
                               paramsRootKey: String,
                               media: [MultipartMedia],
                               success: @escaping SuccessCallback,
                               failure: @escaping FailureCallback) {
     
-    let requestConvertible = BaseURLRequestConvertible(path: url, method: method, headers: headers ?? [:])
+    let requestConvertible = BaseURLRequestConvertible(
+      path: url,
+      method: method,
+      headers: headers
+    )
   
     AF.upload(
       multipartFormData: { (multipartForm) -> Void in
@@ -146,10 +150,10 @@ class APIClient {
         for elem in media {
           elem.embed(inForm: multipartForm)
         }
-    },
+      },
       with: requestConvertible)
     .responseJSON(completionHandler: { result in
-      
+      validateResult(result: result, success: success, failure: failure)
     })
   }
   
@@ -169,7 +173,7 @@ class APIClient {
                      success: @escaping SuccessCallback,
                      failure: @escaping FailureCallback) {
     let encoding = paramsEncoding ?? defaultEncoding(forMethod: method)
-    let headers = APIClient.getHeaders() ?? [:]
+    let headers = APIClient.getHeaders()
     let requestConvertible = BaseURLRequestConvertible(
       path: url,
       method: method,
