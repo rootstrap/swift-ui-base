@@ -15,7 +15,7 @@ enum Roots {
 }
 
 class ViewRouter: ObservableObject {
-  @Published var currentRoot: Roots = .home
+  @Published var currentRoot: Roots = SessionManager.isValidSession ? .profile : .home
   
   static let shared = ViewRouter()
   
