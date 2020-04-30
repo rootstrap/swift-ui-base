@@ -9,9 +9,52 @@
 import SwiftUI
 
 struct SignUpView: View {
+  @ObservedObject var viewModel = SignUpViewModel()
+  
   var body: some View {
-    Text("This is the Sign Up View!")
-      .modifier(TitleModifier())
+    ZStack {
+      ActivityIndicatorView(isAnimating: $viewModel.isLoading, style: .medium)
+      
+      VStack{
+        Text("Sign Up")
+          .modifier(TitleModifier())
+        
+        Spacer()
+        
+        TextFieldView(fieldData: $viewModel.emailData)
+        
+        Spacer().frame(height: 30)
+        
+        TextFieldView(fieldData: $viewModel.passwordData)
+        
+        Spacer().frame(height: 30)
+        
+        TextFieldView(fieldData: $viewModel.confirmPasswordData)
+        
+        Spacer()
+        
+        Button(action: {
+          self.signUpButtonTapped()
+        }, label: {
+          Text("Sign Up")
+            .font(.headline)
+        })
+          .disabled(!viewModel.isValidData)
+          .alert(isPresented: $viewModel.errored) {
+            Alert(title: Text("Oops"),
+                  message: Text(viewModel.error),
+                  dismissButton: .default(Text("Got it!")))
+        }
+        
+        Spacer()
+      }
+      .disabled(viewModel.isLoading)
+      .blur(radius: viewModel.isLoading ? 3 : 0)
+    }
+  }
+  
+  func signUpButtonTapped() {
+    viewModel.attemptSingUp()
   }
 }
 

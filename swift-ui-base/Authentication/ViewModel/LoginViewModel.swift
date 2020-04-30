@@ -43,7 +43,7 @@ class LoginViewModel: ObservableObject, Identifiable {
   func attemptSignin() {
     isLoading = true
     
-    LoginServices.login(
+    AuthenticationServices.login(
       emailData.value,
       password: passwordData.value,
       success: { [weak self] in

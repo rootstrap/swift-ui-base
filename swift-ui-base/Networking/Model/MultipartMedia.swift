@@ -20,7 +20,7 @@ enum MimeType: String {
   case avi = "video/avi"
   case json = "application/json"
   
-  func fileExtension() -> String {
+  var fileExtension: String {
     switch self {
     case .bmp: return ".bmp"
     case .png: return ".png"
@@ -38,7 +38,7 @@ class MultipartMedia {
   var data: Data
   var type: MimeType
   var toFile: String {
-    return key.validFilename + type.fileExtension()
+    return key.validFilename + type.fileExtension
   }
   
   init(key: String, data: Data, type: MimeType = .jpeg) {

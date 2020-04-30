@@ -15,6 +15,7 @@ enum ValidationType {
   case date
   case phone
   case none
+  case custom(isValid: () -> Bool)
 }
 
 extension String {
@@ -58,6 +59,8 @@ extension String {
       return isPhoneNumber()
     case .none:
       return true
+    case .custom(isValid: let validationBlock):
+      return validationBlock()
     default:
       return !isEmpty
     }
