@@ -33,14 +33,14 @@ class SessionManager: NSObject {
     UserDefaults.standard.removeObject(forKey: userDefaultSessionKey)
   }
   
-  static var validSession: Bool {
+  static var isValidSession: Bool {
     if
       let session = currentSession,
       let uid = session.uid,
-      let tkn = session.accessToken,
+      let token = session.accessToken,
       let client = session.client
     {
-      return !uid.isEmpty && !tkn.isEmpty && !client.isEmpty
+      return !uid.isEmpty && !token.isEmpty && !client.isEmpty
     }
     
     return false

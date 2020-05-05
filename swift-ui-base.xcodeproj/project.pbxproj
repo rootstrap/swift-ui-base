@@ -18,6 +18,7 @@
 		0749E1B0242A743300340F8B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749E1AF242A743300340F8B /* ProfileView.swift */; };
 		074AADB924192895002C6F85 /* TextFieldData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074AADB824192895002C6F85 /* TextFieldData.swift */; };
 		074B1440241AC6ED000CFFA0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B143F241AC6ED000CFFA0 /* LoginViewModel.swift */; };
+		074F38DD245B6AA00042984E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074F38DC245B6AA00042984E /* ProfileViewModel.swift */; };
 		0768431F2434D9B40052FD64 /* AuthenticationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0768431E2434D9B40052FD64 /* AuthenticationServices.swift */; };
 		076843222434DF8C0052FD64 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076843212434DF8C0052FD64 /* Session.swift */; };
 		076843242434DFBC0052FD64 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076843232434DFBC0052FD64 /* DictionaryExtension.swift */; };
@@ -76,6 +77,7 @@
 		0749E1AF242A743300340F8B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		074AADB824192895002C6F85 /* TextFieldData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldData.swift; sourceTree = "<group>"; };
 		074B143F241AC6ED000CFFA0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		074F38DC245B6AA00042984E /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		0768431E2434D9B40052FD64 /* AuthenticationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServices.swift; sourceTree = "<group>"; };
 		076843212434DF8C0052FD64 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		076843232434DFBC0052FD64 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
@@ -251,6 +253,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		074F38DB245B6A8A0042984E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				074F38DC245B6AA00042984E /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		0768431B2434D9520052FD64 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +320,7 @@
 		079BE4D7241816B100241627 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				074F38DB245B6A8A0042984E /* ViewModel */,
 				079BE4D8241816B700241627 /* View */,
 			);
 			path = Home;
@@ -679,6 +690,7 @@
 				07442D11241C186100A235E7 /* RootView.swift in Sources */,
 				07A649FE2417E137003C6753 /* SceneDelegate.swift in Sources */,
 				07684339243523740052FD64 /* UserDataManager.swift in Sources */,
+				074F38DD245B6AA00042984E /* ProfileViewModel.swift in Sources */,
 				079BE4DC241816F700241627 /* LoginView.swift in Sources */,
 				0768432C2434E0D20052FD64 /* ConfigurationManager.swift in Sources */,
 				076843262434DFD30052FD64 /* HTTPHeader.swift in Sources */,

@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct ProfileView: View {
+    
+    let viewModel = ProfileViewModel()
+    
     var body: some View {
       NavigationView {
         VStack {
@@ -19,7 +22,7 @@ struct ProfileView: View {
           
           Spacer()
           
-          Button(action: { self.logout() })
+          Button(action: { self.logoutButtonTapped() })
           {
             Text("Log out")
               .frame(width: 300, height: 50)
@@ -34,9 +37,8 @@ struct ProfileView: View {
       }
     }
   
-  func logout() {
-    UserDataManager.deleteUser()
-    SessionManager.deleteSession()
+  func logoutButtonTapped() {
+    viewModel.logout()
     ViewRouter.shared.currentRoot = .home
   }
 }
