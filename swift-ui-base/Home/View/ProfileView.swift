@@ -23,17 +23,10 @@ struct ProfileView: View {
           
           ZStack(alignment: .bottomTrailing) {
 
-            if image != nil {
-              image?
-                .resizable()
-                .frame(width: 100, height: 100)
-                .clipShape(Circle())
-            } else {
-              Image("user_avatar_placeholder")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 100, height: 100)
-            }
+            avatarImage
+              .resizable()
+              .frame(width: 100, height: 100)
+              .clipShape(Circle())
             
             Button(action: { self.editAvatarButtonTapped() }) {
               Image("edit_icon")
@@ -90,6 +83,14 @@ struct ProfileView: View {
   func loadImage() {
     guard let inputImage = viewModel.image else { return }
     image = Image(uiImage: inputImage)
+  }
+  
+  var avatarImage: Image {
+    if let image = image {
+        return image
+    } else {
+        return Image("user_avatar_placeholder")
+    }
   }
 }
 
