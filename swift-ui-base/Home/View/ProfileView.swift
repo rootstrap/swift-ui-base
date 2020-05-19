@@ -86,11 +86,7 @@ struct ProfileView: View {
   }
   
   var avatarImage: Image {
-    if let image = image {
-        return image
-    } else {
-        return Image("user_avatar_placeholder")
-    }
+    image ?? Image("user_avatar_placeholder")
   }
 }
 
