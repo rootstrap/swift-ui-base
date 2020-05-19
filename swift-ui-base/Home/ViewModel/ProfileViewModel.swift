@@ -7,9 +7,16 @@
 //
 
 import Foundation
+import UIKit
 
-class ProfileViewModel {
+class ProfileViewModel: ObservableObject, Identifiable {
     
+  @Published var image: UIImage?
+  
+  var username: String {
+    return UserDataManager.currentUser?.email ?? ""
+  }
+  
   func logout() {
     UserDataManager.deleteUser()
     SessionManager.deleteSession()
