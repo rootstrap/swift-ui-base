@@ -26,7 +26,7 @@ struct User: Codable {
       let id = dictionary[CodingKeys.id.rawValue] as? Int,
       let username = dictionary[CodingKeys.username.rawValue] as? String,
       let email = dictionary[CodingKeys.email.rawValue] as? String
-      else {
+    else {
         return nil
     }
     

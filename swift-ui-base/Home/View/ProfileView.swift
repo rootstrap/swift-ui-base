@@ -66,11 +66,7 @@ struct ProfileView: View {
       Button(action: { self.saveAvatar() })
       {
         Text("Save Avatar")
-          .frame(width: 300, height: 50)
-          .font(.subheadline)
-          .background(saveAvatarButtonColor)
-          .foregroundColor(.white)
-          .cornerRadius(8)
+          .modifier(RoundedButtonModifier(backgroundColor: saveAvatarButtonColor))
       }
       .disabled($image.wrappedValue == nil)
       
@@ -79,11 +75,7 @@ struct ProfileView: View {
       Button(action: { self.getMyProfile() })
       {
         Text("Get my profile")
-          .frame(width: 300, height: 50)
-          .font(.subheadline)
-          .background(Color.red)
-          .foregroundColor(.white)
-          .cornerRadius(8)
+          .modifier(RoundedButtonModifier(backgroundColor: Color.blue))
       }
       
       Spacer().frame(height: 10)
@@ -91,11 +83,7 @@ struct ProfileView: View {
       Button(action: { self.logoutButtonTapped() })
       {
         Text("Log out")
-          .frame(width: 300, height: 50)
-          .font(.subheadline)
-          .background(Color.blue)
-          .foregroundColor(.white)
-          .cornerRadius(8)
+          .modifier(RoundedButtonModifier(backgroundColor: Color.red))
       }
     }
   }
