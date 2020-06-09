@@ -30,7 +30,7 @@ class UserServices {
         
         UserDataManager.currentUser = user
         success(user)
-    },
+      },
       failure: failure
     )
   }

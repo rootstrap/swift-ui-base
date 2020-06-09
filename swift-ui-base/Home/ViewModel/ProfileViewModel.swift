@@ -13,9 +13,8 @@ class ProfileViewModel: ObservableObject, Identifiable {
     
   @Published var image: UIImage?
   @Published var isLoading = false
-  @Published var profileEmailLoaded = false
+  @Published var shouldShowAlert = false
   @Published var errorDescription = ""
-  @Published var errored = false
   
   var username: String {
     return UserDataManager.currentUser?.email ?? ""
@@ -30,12 +29,13 @@ class ProfileViewModel: ObservableObject, Identifiable {
     isLoading = true
     UserServices.getMyProfile(
       success: { [weak self] user in
-        self?.profileEmailLoaded = true
+        self?.errorDescription = ""
+        self?.shouldShowAlert = true
         self?.isLoading = false
       },
       failure: { [weak self] error in
         self?.isLoading = false
-        self?.errored = true
+        self?.shouldShowAlert = true
         self?.errorDescription = error.localizedDescription
     })
   }

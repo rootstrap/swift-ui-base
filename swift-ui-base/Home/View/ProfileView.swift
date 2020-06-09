@@ -43,12 +43,12 @@ struct ProfileView: View {
           ImagePicker(image: self.$viewModel.image)
         }
         
-        .alert(isPresented: $viewModel.profileEmailLoaded) {
-          Alert(title: Text("Profile loaded"), message: Text(viewModel.username))
-        }
-        
-        .alert(isPresented: $viewModel.errored) {
-          Alert(title: Text("Oops"), message: Text(viewModel.errorDescription))
+        .alert(isPresented: $viewModel.shouldShowAlert) {
+          if !viewModel.errorDescription.isEmpty {
+            return Alert(title: Text("Oops"), message: Text(viewModel.errorDescription))
+          } else {
+            return Alert(title: Text("Profile loaded"), message: Text(viewModel.username))
+          }
         }
       }
       .disabled(viewModel.isLoading)
