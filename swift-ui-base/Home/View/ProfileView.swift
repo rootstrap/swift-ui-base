@@ -10,83 +10,112 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    @State var isShowingImagePicker = false
-    @State private var image: Image?
+  @State var isShowingImagePicker = false
+  @State private var image: Image?
   
-    @ObservedObject var viewModel = ProfileViewModel()
+  @ObservedObject var viewModel = ProfileViewModel()
     
-    var body: some View {
-      NavigationView {
-        VStack {
-          Spacer()
-            .frame(height: 30)
-          
-          ZStack(alignment: .bottomTrailing) {
-
-            avatarImage
-              .resizable()
-              .frame(width: 100, height: 100)
-              .clipShape(Circle())
-            
-            Button(action: { self.editAvatarButtonTapped() }) {
-              Image("edit_icon")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 20, height: 20)
-                .foregroundColor(.darkGray)
-              
-            }
-            .padding(EdgeInsets(
-              top: 0,
-              leading: 0,
-              bottom: 10,
-              trailing: 0
-            ))
-          }
-          
-          Spacer()
-            .frame(height: 10)
-          
-          Text("Welcome \(viewModel.username)")
-            .modifier(TitleModifier())
-          
-          Spacer()
-          
-          Button(action: { self.logoutButtonTapped() })
-          {
-            Text("Log out")
-              .frame(width: 300, height: 50)
-              .font(.subheadline)
-              .background(Color.blue)
-              .foregroundColor(.white)
-              .cornerRadius(8)
-          }
-
-          Spacer()
-          
-          .sheet(isPresented: $isShowingImagePicker, onDismiss: loadImage) {
-            ImagePicker(image: self.$viewModel.image)
-          }
+  var body: some View {
+    ZStack {
+      ActivityIndicatorView(isAnimating: $viewModel.isLoading, style: .medium)
+      
+      VStack {
+        Spacer().frame(height: 70)
+        
+        AvatarView(
+          image: $image,
+          isShowingImagePicker: $isShowingImagePicker
+        )
+        
+        Spacer()
+          .frame(height: 10)
+        
+        Text("Welcome \(viewModel.username)")
+          .modifier(TitleModifier())
+        
+        Spacer()
+        
+        buttons
+        
+        Spacer().frame(height: 60)
+        
+        .sheet(isPresented: $isShowingImagePicker, onDismiss: loadImage) {
+          ImagePicker(image: self.$viewModel.image)
+        }
+        
+        .alert(isPresented: $viewModel.profileEmailLoaded) {
+          Alert(title: Text("Profile loaded"), message: Text(viewModel.username))
+        }
+        
+        .alert(isPresented: $viewModel.errored) {
+          Alert(title: Text("Oops"), message: Text(viewModel.errorDescription))
         }
       }
+      .disabled(viewModel.isLoading)
+      .blur(radius: viewModel.isLoading ? 3 : 0)
     }
+  }
+  
+  var saveAvatarButtonColor: Color {
+    let opacity = $image.wrappedValue == nil ? 0.5 : 1
+    return Color.green.opacity(opacity)
+  }
+  
+  var buttons: some View {
+    VStack {
+      Button(action: { self.saveAvatar() })
+      {
+        Text("Save Avatar")
+          .frame(width: 300, height: 50)
+          .font(.subheadline)
+          .background(saveAvatarButtonColor)
+          .foregroundColor(.white)
+          .cornerRadius(8)
+      }
+      .disabled($image.wrappedValue == nil)
+      
+      Spacer().frame(height: 10)
+      
+      Button(action: { self.getMyProfile() })
+      {
+        Text("Get my profile")
+          .frame(width: 300, height: 50)
+          .font(.subheadline)
+          .background(Color.red)
+          .foregroundColor(.white)
+          .cornerRadius(8)
+      }
+      
+      Spacer().frame(height: 10)
+      
+      Button(action: { self.logoutButtonTapped() })
+      {
+        Text("Log out")
+          .frame(width: 300, height: 50)
+          .font(.subheadline)
+          .background(Color.blue)
+          .foregroundColor(.white)
+          .cornerRadius(8)
+      }
+    }
+  }
   
   func logoutButtonTapped() {
     viewModel.logout()
     ViewRouter.shared.currentRoot = .home
   }
   
-  func editAvatarButtonTapped() {
-    isShowingImagePicker = true
+  func saveAvatar() {
+    viewModel.saveAvatar()
+  }
+  
+  func getMyProfile() {
+    viewModel.getMyProfile()
   }
   
   func loadImage() {
     guard let inputImage = viewModel.image else { return }
     image = Image(uiImage: inputImage)
-  }
-  
-  var avatarImage: Image {
-    image ?? Image("user_avatar_placeholder")
   }
 }
 
