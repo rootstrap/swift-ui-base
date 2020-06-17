@@ -12,6 +12,9 @@ import UIKit
 class ProfileViewModel: ObservableObject, Identifiable {
     
   @Published var image: UIImage?
+  @Published var isLoading = false
+  @Published var shouldShowAlert = false
+  @Published var errorDescription = ""
   
   var username: String {
     return UserDataManager.currentUser?.email ?? ""
@@ -20,5 +23,26 @@ class ProfileViewModel: ObservableObject, Identifiable {
   func logout() {
     UserDataManager.deleteUser()
     SessionManager.deleteSession()
+  }
+  
+  func getMyProfile() {
+    isLoading = true
+    UserServices.getMyProfile(
+      success: { [weak self] user in
+        self?.errorDescription = ""
+        self?.shouldShowAlert = true
+        self?.isLoading = false
+      },
+      failure: { [weak self] error in
+        self?.isLoading = false
+        self?.shouldShowAlert = true
+        self?.errorDescription = error.localizedDescription
+    })
+  }
+  
+  func saveAvatar() {
+    //TODO
+    //guard let image = image else { return }
+    isLoading = true
   }
 }
