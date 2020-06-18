@@ -60,17 +60,6 @@ class ios_baseUITests: XCTestCase {
   func testAccountCreation() {
     app.launch()
     
-    let deleteAccountButton = app.buttons["DeleteAccountButton"]
-    if !deleteAccountButton.exists {
-      app.attemptSignIn(
-        in: self,
-        with: "automation@test.com",
-        password: "holahola"
-      )
-      
-      waitFor(element: deleteAccountButton, timeOut: 15)
-    }
-    
     app.deleteAccountIfNeeded(in: self)
     
     //sleep so the server gets time to delete the account
@@ -102,6 +91,8 @@ class ios_baseUITests: XCTestCase {
       waitFor(element: alert, timeOut: 10)
       
       alert.buttons.allElementsBoundByIndex.first?.forceTap()
+      
+      app.deleteAccountIfNeeded(in: self)
     }
   }
   

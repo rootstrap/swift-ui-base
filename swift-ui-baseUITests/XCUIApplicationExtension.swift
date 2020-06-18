@@ -81,4 +81,3 @@ extension XCUIApplication {
     buttons["SignUpButton"].forceTap()
   }
 }
-
