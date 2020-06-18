@@ -67,7 +67,10 @@ class BaseURLRequestConvertible: URLRequestConvertible {
   }
 }
 
-public typealias SuccessCallback = (_ responseObject: [String: Any], _ responseHeaders: [AnyHashable: Any]) -> Void
+public typealias SuccessCallback = (
+  _ responseObject: [String: Any],
+  _ responseHeaders: [AnyHashable: Any]
+  ) -> Void
 public typealias FailureCallback = (_ error: Error) -> Void
 
 class APIClient {
@@ -84,8 +87,10 @@ class APIClient {
   private static let emptyDataStatusCodes: Set<Int> = [204, 205]
   
   //Mandatory headers for Rails 5 API
-  static let baseHeaders: [String: String] = [HTTPHeader.accept.rawValue: "application/json",
-                                              HTTPHeader.contentType.rawValue: "application/json"]
+  static let baseHeaders: [String: String] = [
+    HTTPHeader.accept.rawValue: "application/json",
+    HTTPHeader.contentType.rawValue: "application/json"
+  ]
   
   fileprivate class func getHeaders() -> [String: String] {
     if let session = SessionManager.currentSession {
@@ -104,7 +109,10 @@ class APIClient {
   
   //Recursively build multipart params to send along with media in upload requests.
   //If params includes the desired root key, call this method with an empty String for rootKey param.
-  class func multipartFormData(_ multipartForm: MultipartFormData, params: Any, rootKey: String) {
+  class func multipartFormData(
+    _ multipartForm: MultipartFormData,
+    params: Any, rootKey: String
+  ) {
     switch params.self {
     case let array as [Any]:
       for val in array {
@@ -117,8 +125,11 @@ class APIClient {
         multipartFormData(multipartForm, params: v, rootKey: forwardRootKey)
       }
     default:
-      if let uploadData = "\(params)".data(using: String.Encoding.utf8, allowLossyConversion: false) {
-        let forwardRootKey = rootKey.isEmpty ? "\(type(of: params))".lowercased() : rootKey
+      if let uploadData = "\(params)".data(
+        using: String.Encoding.utf8, allowLossyConversion: false
+        ) {
+        let forwardRootKey = rootKey.isEmpty ?
+          "\(type(of: params))".lowercased() : rootKey
         multipartForm.append(uploadData, withName: forwardRootKey)
       }
     }
@@ -194,14 +205,23 @@ class APIClient {
   class func handleCustomError(_ code: Int?, dictionary: [String: Any]) -> NSError? {
     if let messageDict = dictionary["errors"] as? [String: [String]] {
       let errorsList = messageDict[messageDict.keys.first!]!
-      return NSError(domain: "\(messageDict.keys.first!) \(errorsList.first!)", code: code ?? 500, userInfo: nil)
+      return NSError(
+        domain: "\(messageDict.keys.first!) \(errorsList.first!)",
+        code: code ?? 500, userInfo: nil
+      )
     } else if let error = dictionary["error"] as? String {
       return NSError(domain: error, code: code ?? 500, userInfo: nil)
     } else if let errors = dictionary["errors"] as? [String: Any] {
       let errorDesc = errors[errors.keys.first!]!
-      return NSError(domain: "\(errors.keys.first!) " + "\(errorDesc)", code: code ?? 500, userInfo: nil)
+      return NSError(
+        domain: "\(errors.keys.first!) " + "\(errorDesc)",
+        code: code ?? 500, userInfo: nil
+      )
     } else if dictionary["errors"] != nil || dictionary["error"] != nil {
-      return NSError(domain: "Something went wrong. Try again later.", code: code ?? 500, userInfo: nil)
+      return NSError(
+        domain: "Something went wrong. Try again later.",
+        code: code ?? 500, userInfo: nil
+      )
     }
     return nil
   }
@@ -209,7 +229,10 @@ class APIClient {
   fileprivate class func validateResult(result: AFDataResponse<Any>,
                                         success: @escaping SuccessCallback,
                                         failure: @escaping FailureCallback) {
-    let defaultError = App.error(domain: .generic, localizedDescription: "Error parsing response".localized)
+    let defaultError = App.error(
+      domain: .generic,
+      localizedDescription: "Error parsing response".localized
+    )
     guard let response = result.response else {
       failure(defaultError)
       return
@@ -219,20 +242,27 @@ class APIClient {
       let data = result.data,
       !data.isEmpty
     else {
-      let emptyResponseAllowed = emptyDataStatusCodes.contains(result.response?.statusCode ?? 0)
-      emptyResponseAllowed ? success([:], response.allHeaderFields) : failure(defaultError)
+      let emptyResponseAllowed = emptyDataStatusCodes.contains(
+        result.response?.statusCode ?? 0
+      )
+      emptyResponseAllowed ?
+        success([:], response.allHeaderFields) : failure(defaultError)
       return
     }
     
     var dictionary: [String: Any]?
     var serializationError: NSError?
     do {
-      dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
+      dictionary = try JSONSerialization.jsonObject(
+        with: data, options: .allowFragments
+      ) as? [String: Any]
     } catch let exceptionError as NSError {
       serializationError = exceptionError
     }
     //Check for errors in validate() or API
-    if let errorOcurred = APIClient.handleCustomError(response.statusCode, dictionary: dictionary ?? [:]) ?? result.error as NSError? {
+    if let errorOcurred = APIClient.handleCustomError(
+      response.statusCode, dictionary: dictionary ?? [:]
+    ) ?? result.error as NSError? {
       failure(errorOcurred)
       return
     }

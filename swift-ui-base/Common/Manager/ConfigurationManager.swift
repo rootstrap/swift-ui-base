@@ -18,7 +18,8 @@ class ConfigurationManager: NSObject {
     else {
       print("""
         \(propertyList).plist NOT FOUND -
-        Please check your project configuration in: \n https://github.com/rootstrap/ios-base
+        Please check your project configuration in:
+        \n https://github.com/rootstrap/swift-ui-base
         """)
       return nil
     }
@@ -35,4 +36,3 @@ class ConfigurationManager: NSObject {
     return nil
   }
 }
-

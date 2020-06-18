@@ -57,7 +57,7 @@ class SignUpViewModel: ObservableObject, Identifiable {
       emailData.value,
       password: passwordData.value,
       avatar64: UIImage.random(),
-      success: { [weak self] user in
+      success: { [weak self] _ in
         self?.isLoading = false
         ViewRouter.shared.currentRoot = .profile
       },

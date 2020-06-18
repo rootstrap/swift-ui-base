@@ -16,7 +16,7 @@ struct LoginView: View {
     ZStack {
       ActivityIndicatorView(isAnimating: $viewModel.isLoading, style: .medium)
       
-      VStack{
+      VStack {
         Text("Sign In")
           .modifier(TitleModifier())
         
