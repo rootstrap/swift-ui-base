@@ -7,12 +7,12 @@ target 'swift-ui-base' do
   pod 'Alamofire', '~> 5.0'
 
   target 'swift-ui-baseTests' do
-    inherit! :search_paths
+    inherit! :complete
     # Pods for testing
   end
 
   target 'swift-ui-baseUITests' do
-    inherit! :search_paths
+    inherit! :complete
     # Pods for testing
   end
 

@@ -30,23 +30,22 @@ struct LoginView: View {
         
         Spacer()
         
-        Button(action: {
-          self.loginButtonTapped()
-        }, label: {
+        Button(action: { self.loginButtonTapped() }) {
           Text("Sign In")
             .font(.headline)
-        })
-          .disabled(!viewModel.isValidData)
-          .alert(isPresented: $viewModel.errored) {
-            Alert(title: Text("Oops"),
-                  message: Text(viewModel.error),
-                  dismissButton: .default(Text("Got it!")))
         }
+        .accessibility(identifier: "SignInButton")
+        .disabled(!viewModel.isValidData)
         
         Spacer()
       }
       .disabled(viewModel.isLoading)
       .blur(radius: viewModel.isLoading ? 3 : 0)
+      .alert(isPresented: $viewModel.errored) {
+        Alert(title: Text("Oops"),
+              message: Text(viewModel.error),
+              dismissButton: .default(Text("Got it!")))
+      }
     }
   }
   

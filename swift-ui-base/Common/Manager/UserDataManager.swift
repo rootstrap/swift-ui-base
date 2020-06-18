@@ -10,7 +10,7 @@ import UIKit
 
 class UserDataManager: NSObject {
     
- static private let userDefaultUserKey = "ios-base-user"
+ static private let userDefaultUserKey = "swift-ui-base-user"
   
   static var currentUser: User? {
     get {

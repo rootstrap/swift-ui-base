@@ -1,43 +1,154 @@
 //
-//  swift_ui_baseUITests.swift
 //  swift-ui-baseUITests
 //
-//  Created by Germán Stábile on 3/10/20.
-//  Copyright © 2020 Rootstrap. All rights reserved.
+//  Created by Germán Stábile on 2/13/20.
+//  Copyright © 2020 TopTier labs. All rights reserved.
 //
 
 import XCTest
+@testable import swift_ui_base
 
-class swift_ui_baseUITests: XCTestCase {
-
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+class ios_baseUITests: XCTestCase {
+  
+  var app: XCUIApplication!
+  
+  override func setUp() {
+    super.setUp()
+    app = XCUIApplication()
+    app.launchArguments = ["Automation Test"]
+  }
+  
+  func testCreateAccountValidations() {
+    app.launch()
+    
+    app.deleteAccountIfNeeded(in: self)
+    
+    app.buttons["GoToSignUpLink"].forceTap()
+    
+    let signUpButton = app.buttons["SignUpButton"]
+    waitFor(element: signUpButton, timeOut: 2)
+    
+    XCTAssertFalse(signUpButton.isEnabled)
+    
+    app.type(text: "automation@test", on: "EmailTextField")
+    
+    app.type(
+      text: "holahola",
+      on: "PasswordTextField",
+      isSecure: true
+    )
+    XCTAssertFalse(signUpButton.isEnabled)
+    
+    app.type(
+      text: "holahola",
+      on: "ConfirmPasswordTextField",
+      isSecure: true
+    )
+    XCTAssertFalse(signUpButton.isEnabled)
+    
+    app.type(text: ".com", on: "EmailTextField")
+    XCTAssert(signUpButton.isEnabled)
+    
+    app.type(
+      text: "holahol",
+      on: "ConfirmPasswordTextField",
+      isSecure: true
+    )
+    XCTAssertFalse(signUpButton.isEnabled)
+  }
+  
+  func testAccountCreation() {
+    app.launch()
+    
+    let deleteAccountButton = app.buttons["DeleteAccountButton"]
+    if !deleteAccountButton.exists {
+      app.attemptSignIn(
+        in: self,
+        with: "automation@test.com",
+        password: "holahola"
+      )
+      
+      waitFor(element: deleteAccountButton, timeOut: 15)
     }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    app.deleteAccountIfNeeded(in: self)
+    
+    //sleep so the server gets time to delete the account
+    sleep(5)
+    app.attemptSignUp(
+      in: self,
+      with: "automation@test.com",
+      password: "holahola"
+    )
+    
+    let logOutButton = app.buttons["LogOutButton"]
+    
+    waitFor(element: logOutButton, timeOut: 15)
+    
+    logOutButton.forceTap()
+    
+    app.attemptSignIn(
+      in: self,
+      with: "automation@test.com",
+      password: "holahola"
+    )
+    
+    let getMyProfile = app.buttons["GetMyProfileButton"]
+    waitFor(element: getMyProfile, timeOut: 10)
+    getMyProfile.forceTap()
+    
+    sleep(10)
+    if let alert = app.alerts.allElementsBoundByIndex.first {
+      waitFor(element: alert, timeOut: 10)
+      
+      alert.buttons.allElementsBoundByIndex.first?.forceTap()
     }
-
-    func testExample() {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+  }
+  
+  func testSignInFailure() {
+    app.launch()
+    
+    app.deleteAccountIfNeeded(in: self)
+    
+    app.attemptSignIn(in: self,
+                      with: "automation@test.com",
+                      password: "incorrect password")
+    
+    if let alert = app.alerts.allElementsBoundByIndex.first {
+      waitFor(element: alert, timeOut: 2)
+      XCTAssertTrue(alert.label == "Error")
+      
+      alert.buttons.allElementsBoundByIndex.first?.forceTap()
     }
-
-    func testLaunchPerformance() {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
+    
+    let signInButton = app.buttons["SignInButton"]
+    waitFor(element: signInButton, timeOut: 2)
+  }
+  
+  func testSignInValidations() {
+    app.launch()
+    
+    app.deleteAccountIfNeeded(in: self)
+    
+    app.buttons["GoToLoginLink"].forceTap()
+    
+    let signInButton = app.buttons["SignInButton"]
+    
+    waitFor(element: signInButton, timeOut: 2)
+    
+    XCTAssertFalse(signInButton.isEnabled)
+    
+    app.type(text: "automation@test", on: "EmailTextField")
+    app.type(
+      text: "holahola",
+      on: "PasswordTextField",
+      isSecure: true
+    )
+    
+    XCTAssertFalse(signInButton.isEnabled)
+    
+    app.type(text: ".com", on: "EmailTextField")
+    
+    XCTAssert(signInButton.isEnabled)
+  }
 }

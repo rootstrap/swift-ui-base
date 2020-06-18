@@ -68,6 +68,7 @@ struct ProfileView: View {
           .modifier(RoundedButtonModifier(backgroundColor: saveAvatarButtonColor))
       }
       .disabled($image.wrappedValue == nil)
+      .accessibility(identifier: "SaveAvatarButton")
       
       Spacer().frame(height: 10)
       
@@ -75,6 +76,7 @@ struct ProfileView: View {
         Text("Get my profile")
           .modifier(RoundedButtonModifier(backgroundColor: Color.blue))
       }
+      .accessibility(identifier: "GetMyProfileButton")
       
       Spacer().frame(height: 10)
       
@@ -82,11 +84,25 @@ struct ProfileView: View {
         Text("Log out")
           .modifier(RoundedButtonModifier(backgroundColor: Color.red))
       }
+      .accessibility(identifier: "LogOutButton")
+      
+      Spacer().frame(height: 10)
+      
+      Button(action: { self.deleteAccountButtonTapped() }) {
+        Text("Delete Account")
+          .modifier(RoundedButtonModifier(backgroundColor: Color.purple))
+      }
+      .accessibility(identifier: "DeleteAccountButton")
     }
   }
   
   func logoutButtonTapped() {
     viewModel.logout()
+    ViewRouter.shared.currentRoot = .home
+  }
+  
+  func deleteAccountButtonTapped() {
+    viewModel.deleteAccount()
     ViewRouter.shared.currentRoot = .home
   }
   

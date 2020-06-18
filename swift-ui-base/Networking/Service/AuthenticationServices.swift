@@ -104,6 +104,43 @@ class AuthenticationServices {
     )
   }
   
+  class func logout(
+    success: @escaping () -> Void = {},
+    failure: @escaping (_ error: Error) -> Void = { _ in }
+  ) {
+    let url = "\(usersUrl)sign_out"
+    APIClient.request(
+      .delete,
+      url: url,
+      success: { _, _ in
+        deleteSession()
+        success()
+      },
+      failure: failure
+    )
+  }
+  
+  class func deleteAccount(
+    success: @escaping () -> Void = {},
+    failure: @escaping (_ error: Error) -> Void = { _ in }
+  ) {
+    let url = "\(currentUserUrl)delete_account"
+    APIClient.request(
+      .delete,
+      url: url,
+      success: { _, _ in
+        deleteSession()
+        success()
+      },
+      failure: failure
+    )
+  }
+  
+  class func deleteSession() {
+    UserDataManager.deleteUser()
+    SessionManager.deleteSession()
+  }
+  
   class func saveUserSession(
     fromResponse response: [String: Any],
     headers: [AnyHashable: Any]
