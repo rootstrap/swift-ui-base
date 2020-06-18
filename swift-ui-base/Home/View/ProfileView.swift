@@ -63,8 +63,7 @@ struct ProfileView: View {
   
   var buttons: some View {
     VStack {
-      Button(action: { self.saveAvatar() })
-      {
+      Button(action: { self.saveAvatar() }) {
         Text("Save Avatar")
           .modifier(RoundedButtonModifier(backgroundColor: saveAvatarButtonColor))
       }
@@ -72,16 +71,14 @@ struct ProfileView: View {
       
       Spacer().frame(height: 10)
       
-      Button(action: { self.getMyProfile() })
-      {
+      Button(action: { self.getMyProfile() }) {
         Text("Get my profile")
           .modifier(RoundedButtonModifier(backgroundColor: Color.blue))
       }
       
       Spacer().frame(height: 10)
       
-      Button(action: { self.logoutButtonTapped() })
-      {
+      Button(action: { self.logoutButtonTapped() }) {
         Text("Log out")
           .modifier(RoundedButtonModifier(backgroundColor: Color.red))
       }

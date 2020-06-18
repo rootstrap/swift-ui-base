@@ -44,7 +44,9 @@ struct TextFieldView: View {
       
       Rectangle()
         .frame(maxWidth: .infinity, maxHeight: 1)
-        .foregroundColor(!fieldData.isValid && fieldData.hasTyped ? .errorRed : .lightGray)
+        .foregroundColor(
+          !fieldData.isValid && fieldData.hasTyped ? .errorRed : .lightGray
+        )
         .opacity(0.5)
       
       if !fieldData.isValid && fieldData.hasTyped {

@@ -38,4 +38,3 @@ class UserDataManager: NSObject {
     return currentUser != nil
   }
 }
-

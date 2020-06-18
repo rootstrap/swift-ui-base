@@ -28,7 +28,7 @@ class ProfileViewModel: ObservableObject, Identifiable {
   func getMyProfile() {
     isLoading = true
     UserServices.getMyProfile(
-      success: { [weak self] user in
+      success: { [weak self] _ in
         self?.errorDescription = ""
         self?.shouldShowAlert = true
         self?.isLoading = false

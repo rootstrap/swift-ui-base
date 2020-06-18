@@ -1,0 +1,7 @@
+coverage_service: cobertura_xml
+workspace: swift-ui-base.xcworkspace
+xcodeproj: swift-ui-base.xcodeproj
+scheme: swift-ui-base
+binary_basename: swift-ui-base
+ignore:
+  - Pods/*

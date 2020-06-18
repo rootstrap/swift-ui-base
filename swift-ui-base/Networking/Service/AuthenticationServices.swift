@@ -48,7 +48,14 @@ class AuthenticationServices {
       ]
     ]
     
-    let picData = avatar.jpegData(compressionQuality: 0.75)!
+    guard let picData = avatar.jpegData(compressionQuality: 0.75) else {
+      failure(App.error(
+        domain: .parsing,
+        code: 1000,
+        localizedDescription: "Could not parse image"
+      ))
+      return
+    }
     let image = MultipartMedia(key: "user[avatar]", data: picData)
     //Mixed base64 encoded and multipart images are supported in [MultipartMedia] param:
     //Example: let image2 = Base64Media(key: "user[image]", data: picData) Then: media [image, image2]
@@ -71,14 +78,18 @@ class AuthenticationServices {
                     avatar64: UIImage,
                     success: @escaping (_ user: User?) -> Void,
                     failure: @escaping (_ error: Error) -> Void) {
-    let picData = avatar64.jpegData(compressionQuality: 0.75)
+    var userParameters: [String: Any] = [
+      "email": email,
+      "password": password,
+      "password_confirmation": password
+    ]
+    
+    if let picData = avatar64.jpegData(compressionQuality: 0.75) {
+      userParameters["image"] = picData.asBase64Param()
+    }
+    
     let parameters = [
-      "user": [
-        "email": email,
-        "password": password,
-        "password_confirmation": password,
-        "image": picData!.asBase64Param()
-      ]
+      "user": userParameters
     ]
     
     APIClient.request(
@@ -93,8 +104,13 @@ class AuthenticationServices {
     )
   }
   
-  class func saveUserSession(fromResponse response: [String: Any], headers: [AnyHashable: Any]) {
-    UserDataManager.currentUser = User(dictionary: response["user"] as? [String: Any] ?? [:])
+  class func saveUserSession(
+    fromResponse response: [String: Any],
+    headers: [AnyHashable: Any]
+  ) {
+    UserDataManager.currentUser = User(
+      dictionary: response["user"] as? [String: Any] ?? [:]
+    )
     if let headers = headers as? [String: Any] {
       SessionManager.currentSession = Session(headers: headers)
     }

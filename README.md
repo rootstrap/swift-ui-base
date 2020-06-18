@@ -1,3 +1,8 @@
+[![Build Status](https://img.shields.io/travis/rootstrap/swift-ui-base/master.svg)](https://travis-ci.org/rootstrap/swift-ui-base)
+ [![Maintainability](https://api.codeclimate.com/v1/badges/a9aaea084a3759dc5596/maintainability)](https://codeclimate.com/repos/5eda90fd7beea953360073d0/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a9aaea084a3759dc5596/test_coverage)](https://codeclimate.com/repos/5eda90fd7beea953360073d0/test_coverage)
+[![License](https://img.shields.io/github/license/rootstrap/swift-ui-base.svg)](https://github.com/rootstrap/swift-ui-base/blob/master/LICENSE.md)
+
 # SwiftUI Base Template
 **SwiftUI base** is a boilerplate project created by Rootstrap for new projects using SwiftUI. The main objective is helping any new projects jump start into feature development by providing a handful of functionalities and helpers.
 
