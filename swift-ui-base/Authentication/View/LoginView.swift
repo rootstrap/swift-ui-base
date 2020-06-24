@@ -23,8 +23,7 @@ struct LoginView: View {
         Spacer()
         
         TextFieldView(fieldData: $viewModel.emailData)
-        
-        Spacer().frame(height: 30)
+          .padding(.bottom, 30)
         
         TextFieldView(fieldData: $viewModel.passwordData)
         

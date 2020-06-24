@@ -28,9 +28,7 @@ struct HomeView: View {
             .foregroundColor(.white)
             .cornerRadius(8)
         }
-        
-        Spacer()
-          .frame(maxHeight: 20)
+        .padding(.bottom, 20)
         
         NavigationLink(destination: SignUpView()) {
           Text("Don't have an account? Lets create one! ►")

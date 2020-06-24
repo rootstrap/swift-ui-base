@@ -20,15 +20,10 @@ struct ProfileView: View {
       ActivityIndicatorView(isAnimating: $viewModel.isLoading, style: .medium)
       
       VStack {
-        Spacer().frame(height: 70)
-        
         AvatarView(
           image: $image,
           isShowingImagePicker: $isShowingImagePicker
-        )
-        
-        Spacer()
-          .frame(height: 10)
+        ).padding(.top, 70)
         
         Text("Welcome \(viewModel.username)")
           .modifier(TitleModifier())
@@ -36,8 +31,7 @@ struct ProfileView: View {
         Spacer()
         
         buttons
-        
-        Spacer().frame(height: 60)
+          .padding(.bottom, 60)
         
         .sheet(isPresented: $isShowingImagePicker, onDismiss: loadImage) {
           ImagePicker(image: self.$viewModel.image)
@@ -56,31 +50,23 @@ struct ProfileView: View {
     }
   }
   
-  var saveAvatarButtonColor: Color {
-    let opacity = $image.wrappedValue == nil ? 0.5 : 1
-    return Color.green.opacity(opacity)
-  }
-  
   var buttons: some View {
-    VStack {
+    VStack(spacing: 10) {
       Button(action: { self.saveAvatar() }) {
         Text("Save Avatar")
-          .modifier(RoundedButtonModifier(backgroundColor: saveAvatarButtonColor))
+          .modifier(RoundedButtonModifier(backgroundColor: Color(.systemGreen)))
+          .opacity($image.wrappedValue == nil ? 0.5 : 1)
       }
       .disabled($image.wrappedValue == nil)
-      
-      Spacer().frame(height: 10)
-      
+  
       Button(action: { self.getMyProfile() }) {
         Text("Get my profile")
-          .modifier(RoundedButtonModifier(backgroundColor: Color.blue))
+          .modifier(RoundedButtonModifier(backgroundColor: Color(.systemBlue)))
       }
-      
-      Spacer().frame(height: 10)
       
       Button(action: { self.logoutButtonTapped() }) {
         Text("Log out")
-          .modifier(RoundedButtonModifier(backgroundColor: Color.red))
+          .modifier(RoundedButtonModifier(backgroundColor: Color(.systemRed)))
       }
     }
   }

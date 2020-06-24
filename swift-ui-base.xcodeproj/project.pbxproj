@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		071D6B682419576500571DE9 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D6B672419576500571DE9 /* ColorExtension.swift */; };
 		071D6B6C241976C200571DE9 /* TitleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D6B6B241976C200571DE9 /* TitleModifier.swift */; };
-		07415FE524181D8800486885 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07415FE424181D8800486885 /* SignUpView.swift */; };
 		07415FE9241832E700486885 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07415FE8241832E700486885 /* TextFieldView.swift */; };
 		07415FEC24183A7E00486885 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07415FEB24183A7E00486885 /* StringExtension.swift */; };
 		07442D0B241C08E700A235E7 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07442D0A241C08E700A235E7 /* ActivityIndicatorView.swift */; };
@@ -48,6 +47,7 @@
 		07A64A1E2417E13B003C6753 /* swift_ui_baseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A64A1D2417E13B003C6753 /* swift_ui_baseUITests.swift */; };
 		3218556AC3E288299647648A /* Pods_swift_ui_base.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEC362C9076EB4484C6F738 /* Pods_swift_ui_base.framework */; };
 		4EAABE85E34C52955902C6D1 /* Pods_swift_ui_baseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 058C2EECB9E8E4FD7D43885A /* Pods_swift_ui_baseTests.framework */; };
+		6E95AF1124A3E59E009B92DD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E95AF1024A3E59E009B92DD /* SignUpView.swift */; };
 		95FA54FA44937688659BCB9D /* Pods_swift_ui_baseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7342A35480A6FAF99723F957 /* Pods_swift_ui_baseUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +72,6 @@
 		058C2EECB9E8E4FD7D43885A /* Pods_swift_ui_baseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swift_ui_baseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		071D6B672419576500571DE9 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		071D6B6B241976C200571DE9 /* TitleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleModifier.swift; sourceTree = "<group>"; };
-		07415FE424181D8800486885 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		07415FE8241832E700486885 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		07415FEB24183A7E00486885 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		07442D0A241C08E700A235E7 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
@@ -118,6 +117,7 @@
 		12653AEF26E8044C6B61E1ED /* Pods-swift-ui-base.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift-ui-base.release.xcconfig"; path = "Target Support Files/Pods-swift-ui-base/Pods-swift-ui-base.release.xcconfig"; sourceTree = "<group>"; };
 		147939A36A56A6307116F738 /* Pods-swift-ui-baseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift-ui-baseTests.debug.xcconfig"; path = "Target Support Files/Pods-swift-ui-baseTests/Pods-swift-ui-baseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		40226436FE838D186D731142 /* Pods-swift-ui-base-swift-ui-baseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift-ui-base-swift-ui-baseUITests.debug.xcconfig"; path = "Target Support Files/Pods-swift-ui-base-swift-ui-baseUITests/Pods-swift-ui-base-swift-ui-baseUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6E95AF1024A3E59E009B92DD /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		72B223D48BBD0ED4B7332B93 /* Pods-swift-ui-baseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift-ui-baseTests.release.xcconfig"; path = "Target Support Files/Pods-swift-ui-baseTests/Pods-swift-ui-baseTests.release.xcconfig"; sourceTree = "<group>"; };
 		7342A35480A6FAF99723F957 /* Pods_swift_ui_baseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swift_ui_baseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D96E4C3946755E2926E5F2D /* Pods-swift-ui-baseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift-ui-baseUITests.release.xcconfig"; path = "Target Support Files/Pods-swift-ui-baseUITests/Pods-swift-ui-baseUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -375,7 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				079BE4DB241816F700241627 /* LoginView.swift */,
-				07415FE424181D8800486885 /* SignUpView.swift */,
+				6E95AF1024A3E59E009B92DD /* SignUpView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -706,6 +706,7 @@
 				076843302434E6660052FD64 /* MultipartMedia.swift in Sources */,
 				0768432E2434E5170052FD64 /* APIClient.swift in Sources */,
 				07442D0B241C08E700A235E7 /* ActivityIndicatorView.swift in Sources */,
+				6E95AF1124A3E59E009B92DD /* SignUpView.swift in Sources */,
 				07415FEC24183A7E00486885 /* StringExtension.swift in Sources */,
 				071D6B6C241976C200571DE9 /* TitleModifier.swift in Sources */,
 				076843322434E6B70052FD64 /* Base64Media.swift in Sources */,
@@ -715,7 +716,6 @@
 				076843242434DFBC0052FD64 /* DictionaryExtension.swift in Sources */,
 				0768431F2434D9B40052FD64 /* AuthenticationServices.swift in Sources */,
 				071D6B682419576500571DE9 /* ColorExtension.swift in Sources */,
-				07415FE524181D8800486885 /* SignUpView.swift in Sources */,
 				07415FE9241832E700486885 /* TextFieldView.swift in Sources */,
 				07442D11241C186100A235E7 /* RootView.swift in Sources */,
 				0750F70524900A9E004B1D32 /* RoundedButtonModifier.swift in Sources */,
