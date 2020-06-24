@@ -33,9 +33,7 @@ struct SignUpView: View {
         
         Spacer()
         
-        Button(action: {
-          self.signUpButtonTapped()
-        }, label: {
+        Button(action: signUpButtonTapped, label: {
           Text("Sign Up")
             .font(.headline)
         })

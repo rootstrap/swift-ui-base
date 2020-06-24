@@ -23,7 +23,7 @@ class ios_baseUITests: XCTestCase {
     
     app.deleteAccountIfNeeded(in: self)
     
-    app.buttons["GoToSignUpLink"].forceTap()
+    app.buttons["GoToSignUpLink"].tap()
     
     let signUpButton = app.buttons["SignUpButton"]
     waitFor(element: signUpButton, timeOut: 2)
@@ -74,7 +74,7 @@ class ios_baseUITests: XCTestCase {
     
     waitFor(element: logOutButton, timeOut: 15)
     
-    logOutButton.forceTap()
+    logOutButton.tap()
     
     app.attemptSignIn(
       in: self,
@@ -84,13 +84,13 @@ class ios_baseUITests: XCTestCase {
     
     let getMyProfile = app.buttons["GetMyProfileButton"]
     waitFor(element: getMyProfile, timeOut: 10)
-    getMyProfile.forceTap()
+    getMyProfile.tap()
     
     sleep(10)
     if let alert = app.alerts.allElementsBoundByIndex.first {
       waitFor(element: alert, timeOut: 10)
       
-      alert.buttons.allElementsBoundByIndex.first?.forceTap()
+      alert.buttons.allElementsBoundByIndex.first?.tap()
       
       app.deleteAccountIfNeeded(in: self)
     }
@@ -101,15 +101,17 @@ class ios_baseUITests: XCTestCase {
     
     app.deleteAccountIfNeeded(in: self)
     
-    app.attemptSignIn(in: self,
-                      with: "automation@test.com",
-                      password: "incorrect password")
+    app.attemptSignIn(
+      in: self,
+      with: "automation@test.com",
+      password: "incorrect password"
+    )
     
     if let alert = app.alerts.allElementsBoundByIndex.first {
       waitFor(element: alert, timeOut: 2)
       XCTAssertTrue(alert.label == "Error")
       
-      alert.buttons.allElementsBoundByIndex.first?.forceTap()
+      alert.buttons.allElementsBoundByIndex.first?.tap()
     }
     
     let signInButton = app.buttons["SignInButton"]
@@ -121,7 +123,7 @@ class ios_baseUITests: XCTestCase {
     
     app.deleteAccountIfNeeded(in: self)
     
-    app.buttons["GoToLoginLink"].forceTap()
+    app.buttons["GoToLoginLink"].tap()
     
     let signInButton = app.buttons["SignInButton"]
     

@@ -12,13 +12,20 @@ extension XCUIApplication {
   func type(text: String, on fieldName: String, isSecure: Bool = false) {
     let fields = isSecure ? secureTextFields : textFields
     let field = fields[fieldName]
-    field.forceTap()
+    field.tap()
     field.typeText(text)
+  }
+  
+  func dismissKeyboard() {
+    //ugly hack to dismiss keyboard
+    let field = textFields.firstMatch
+    field.tap()
+    field.typeText("\n")
   }
   
   func clearText(on fieldName: String) {
     let field = textFields[fieldName]
-    field.forceTap()
+    field.tap()
     field.clearText()
   }
   
@@ -27,7 +34,7 @@ extension XCUIApplication {
     let goToLoginButton = buttons["GoToLoginLink"]
     
     if deleteAccountButton.exists {
-      deleteAccountButton.forceTap()
+      deleteAccountButton.tap()
       testCase.waitFor(element: goToLoginButton, timeOut: 5)
     }
   }
@@ -39,7 +46,7 @@ extension XCUIApplication {
   ) {
     let goToSignInButton = buttons["GoToLoginLink"]
     
-    goToSignInButton.forceTap()
+    goToSignInButton.tap()
     
     let signInButton = buttons["SignInButton"]
     
@@ -48,10 +55,9 @@ extension XCUIApplication {
     type(text: email, on: "EmailTextField")
     type(text: password, on: "PasswordTextField", isSecure: true)
     
-    //ugly hack to dismiss keyboard
-    type(text: "\n", on: "EmailTextField")
+    dismissKeyboard()
     
-    signInButton.forceTap()
+    signInButton.tap()
   }
   
   func attemptSignUp(
@@ -59,7 +65,7 @@ extension XCUIApplication {
     with email: String,
     password: String
   ) {
-    buttons["GoToSignUpLink"].forceTap()
+    buttons["GoToSignUpLink"].tap()
     
     type(text: email, on: "EmailTextField")
     
@@ -69,15 +75,16 @@ extension XCUIApplication {
       isSecure: true
     )
     
+    dismissKeyboard()
+    
     type(
       text: password,
       on: "ConfirmPasswordTextField",
       isSecure: true
     )
     
-    //ugly hack to dismiss keyboard
-    type(text: "\n", on: "EmailTextField")
+    dismissKeyboard()
     
-    buttons["SignUpButton"].forceTap()
+    buttons["SignUpButton"].tap()
   }
 }

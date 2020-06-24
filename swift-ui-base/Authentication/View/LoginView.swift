@@ -30,7 +30,7 @@ struct LoginView: View {
         
         Spacer()
         
-        Button(action: { self.loginButtonTapped() }) {
+        Button(action: loginButtonTapped) {
           Text("Sign In")
             .font(.headline)
         }

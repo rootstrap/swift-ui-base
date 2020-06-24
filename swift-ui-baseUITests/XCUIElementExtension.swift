@@ -20,13 +20,4 @@ extension XCUIElement {
       stringValue.map { _ in XCUIKeyboardKey.delete.rawValue }.joined()
     typeText(deleteString)
   }
-  
-  func forceTap() {
-    if isHittable {
-      tap()
-    } else {
-      let coordinate = self.coordinate(withNormalizedOffset: CGVector(dx: 0.0, dy: 0.0))
-      coordinate.tap()
-    }
-  }
 }

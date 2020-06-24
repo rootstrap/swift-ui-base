@@ -23,9 +23,11 @@ class UserServiceUnitTests: XCTestCase {
   
   override func setUp() {
     super.setUp()
-    if let userDictionary = userResponse["user"] as? [String: Any] {
-      testUser = User(dictionary: userDictionary)
-    }
+    testUser = User(
+      id: 0,
+      username: "test",
+      email: "test-user@rootstrap.com"
+    )
     SessionManager.deleteSession()
     UserDataManager.deleteUser()
   }
