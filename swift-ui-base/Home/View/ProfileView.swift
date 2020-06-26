@@ -20,15 +20,11 @@ struct ProfileView: View {
       ActivityIndicatorView(isAnimating: $viewModel.isLoading, style: .medium)
       
       VStack {
-        Spacer().frame(height: 70)
-        
+  
         AvatarView(
           image: $image,
           isShowingImagePicker: $isShowingImagePicker
-        )
-        
-        Spacer()
-          .frame(height: 10)
+        ).padding(.top, 70)
         
         Text("Welcome \(viewModel.username)")
           .modifier(TitleModifier())
@@ -36,8 +32,7 @@ struct ProfileView: View {
         Spacer()
         
         buttons
-        
-        Spacer().frame(height: 60)
+          .padding(.bottom, 60)
         
         .sheet(isPresented: $isShowingImagePicker, onDismiss: loadImage) {
           ImagePicker(image: self.$viewModel.image)
@@ -62,7 +57,7 @@ struct ProfileView: View {
   }
   
   var buttons: some View {
-    VStack {
+    VStack(spacing: 10) {
       Button(action: saveAvatar) {
         Text("Save Avatar")
           .modifier(RoundedButtonModifier(backgroundColor: saveAvatarButtonColor))
@@ -70,23 +65,17 @@ struct ProfileView: View {
       .disabled($image.wrappedValue == nil)
       .accessibility(identifier: "SaveAvatarButton")
       
-      Spacer().frame(height: 10)
-      
       Button(action: getMyProfile) {
         Text("Get my profile")
           .modifier(RoundedButtonModifier(backgroundColor: Color.blue))
       }
       .accessibility(identifier: "GetMyProfileButton")
       
-      Spacer().frame(height: 10)
-      
       Button(action: logoutButtonTapped) {
         Text("Log out")
           .modifier(RoundedButtonModifier(backgroundColor: Color.red))
       }
       .accessibility(identifier: "LogOutButton")
-      
-      Spacer().frame(height: 10)
       
       Button(action: deleteAccountButtonTapped) {
         Text("Delete Account")

@@ -21,16 +21,11 @@ struct SignUpView: View {
         
         Spacer()
         
-        TextFieldView(fieldData: $viewModel.emailData)
-        
-        Spacer().frame(height: 30)
-        
-        TextFieldView(fieldData: $viewModel.passwordData)
-        
-        Spacer().frame(height: 30)
-        
-        TextFieldView(fieldData: $viewModel.confirmPasswordData)
-        
+        VStack(spacing: 30) {
+          TextFieldView(fieldData: $viewModel.emailData)
+          TextFieldView(fieldData: $viewModel.passwordData)
+          TextFieldView(fieldData: $viewModel.confirmPasswordData)
+        }
         Spacer()
         
         Button(action: signUpButtonTapped, label: {
