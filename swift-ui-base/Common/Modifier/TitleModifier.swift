@@ -16,3 +16,16 @@ struct TitleModifier: ViewModifier {
       .font(.largeTitle)
   }
 }
+
+struct TitleModifier_Previews: PreviewProvider {
+  static var previews: some View {
+    Group {
+      Text("Hello, World!")
+        .previewLayout(.sizeThatFits)
+      
+      Text("Hello, World!")
+      .modifier(TitleModifier())
+      .previewLayout(.sizeThatFits)
+    }
+  }
+}

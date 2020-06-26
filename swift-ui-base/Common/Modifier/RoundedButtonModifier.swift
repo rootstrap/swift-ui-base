@@ -21,3 +21,19 @@ struct RoundedButtonModifier: ViewModifier {
       .cornerRadius(8)
   }
 }
+
+struct RoundedButtonModifier_Previews: PreviewProvider {
+  static var previews: some View {
+    Group {
+      Text("Hello, World!")
+        .padding()
+        .previewLayout(.sizeThatFits)
+      
+      Text("Hello, World!")
+        .modifier(RoundedButtonModifier(backgroundColor: Color.blue))
+        .padding()
+        .previewLayout(.sizeThatFits)
+      
+    }
+  }
+}
