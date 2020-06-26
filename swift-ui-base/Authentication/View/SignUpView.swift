@@ -17,7 +17,7 @@ struct SignUpView: View {
       
       VStack {
         Text("Sign Up")
-          .modifier(TitleModifier())
+          .modifier(MainTitle())
         
         Spacer()
         

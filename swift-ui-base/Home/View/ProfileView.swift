@@ -27,7 +27,7 @@ struct ProfileView: View {
         ).padding(.top, 70)
         
         Text("Welcome \(viewModel.username)")
-          .modifier(TitleModifier())
+          .modifier(MainTitle())
         
         Spacer()
         
@@ -60,26 +60,26 @@ struct ProfileView: View {
     VStack(spacing: 10) {
       Button(action: saveAvatar) {
         Text("Save Avatar")
-          .modifier(RoundedButtonModifier(backgroundColor: saveAvatarButtonColor))
+          .modifier(MainRoundedButton(backgroundColor: saveAvatarButtonColor))
       }
       .disabled($image.wrappedValue == nil)
       .accessibility(identifier: "SaveAvatarButton")
       
       Button(action: getMyProfile) {
         Text("Get my profile")
-          .modifier(RoundedButtonModifier(backgroundColor: Color.blue))
+          .modifier(MainRoundedButton(backgroundColor: Color.blue))
       }
       .accessibility(identifier: "GetMyProfileButton")
       
       Button(action: logoutButtonTapped) {
         Text("Log out")
-          .modifier(RoundedButtonModifier(backgroundColor: Color.red))
+          .modifier(MainRoundedButton(backgroundColor: Color.red))
       }
       .accessibility(identifier: "LogOutButton")
       
       Button(action: deleteAccountButtonTapped) {
         Text("Delete Account")
-          .modifier(RoundedButtonModifier(backgroundColor: Color.purple))
+          .modifier(MainRoundedButton(backgroundColor: Color.purple))
       }
       .accessibility(identifier: "DeleteAccountButton")
     }

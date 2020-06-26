@@ -18,7 +18,7 @@ struct LoginView: View {
       
       VStack {
         Text("Sign In")
-          .modifier(TitleModifier())
+          .modifier(MainTitle())
         
         Spacer()
         

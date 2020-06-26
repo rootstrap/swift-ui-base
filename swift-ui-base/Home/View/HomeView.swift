@@ -16,7 +16,7 @@ struct HomeView: View {
         Spacer()
         
         Text("Welcome to RS SwiftUI base!")
-          .modifier(TitleModifier())
+          .modifier(MainTitle())
         
         Spacer()
         

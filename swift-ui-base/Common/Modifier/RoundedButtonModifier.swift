@@ -8,9 +8,10 @@
 
 import SwiftUI
 
-struct RoundedButtonModifier: ViewModifier {
+struct MainRoundedButton: ViewModifier {
   
-  var backgroundColor: Color
+  var backgroundColor: Color = .blue
+  var radius: CGFloat = 8
   
   func body(content: Content) -> some View {
     content
@@ -18,11 +19,11 @@ struct RoundedButtonModifier: ViewModifier {
       .font(.headline)
       .foregroundColor(.white)
       .background(backgroundColor)
-      .cornerRadius(8)
+      .cornerRadius(radius)
   }
 }
 
-struct RoundedButtonModifier_Previews: PreviewProvider {
+struct MainRoundedButton_Previews: PreviewProvider {
   static var previews: some View {
     Group {
       Text("Hello, World!")
@@ -30,10 +31,9 @@ struct RoundedButtonModifier_Previews: PreviewProvider {
         .previewLayout(.sizeThatFits)
       
       Text("Hello, World!")
-        .modifier(RoundedButtonModifier(backgroundColor: Color.blue))
+        .modifier(MainRoundedButton())
         .padding()
         .previewLayout(.sizeThatFits)
-      
     }
   }
 }
