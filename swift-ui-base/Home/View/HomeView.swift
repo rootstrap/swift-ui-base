@@ -28,6 +28,7 @@ struct HomeView: View {
             .foregroundColor(.white)
             .cornerRadius(8)
         }
+        .accessibility(identifier: "GoToLoginLink")
         
         Spacer()
           .frame(maxHeight: 20)
@@ -39,6 +40,7 @@ struct HomeView: View {
             .foregroundColor(.gray)
             .cornerRadius(8)
         }
+        .accessibility(identifier: "GoToSignUpLink")
   
         Spacer()
       }

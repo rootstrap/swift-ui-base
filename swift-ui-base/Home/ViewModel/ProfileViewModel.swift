@@ -21,8 +21,11 @@ class ProfileViewModel: ObservableObject, Identifiable {
   }
   
   func logout() {
-    UserDataManager.deleteUser()
-    SessionManager.deleteSession()
+    AuthenticationServices.logout()
+  }
+  
+  func deleteAccount() {
+    AuthenticationServices.deleteAccount()
   }
   
   func getMyProfile() {

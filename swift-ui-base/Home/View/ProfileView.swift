@@ -63,30 +63,46 @@ struct ProfileView: View {
   
   var buttons: some View {
     VStack {
-      Button(action: { self.saveAvatar() }) {
+      Button(action: saveAvatar) {
         Text("Save Avatar")
           .modifier(RoundedButtonModifier(backgroundColor: saveAvatarButtonColor))
       }
       .disabled($image.wrappedValue == nil)
+      .accessibility(identifier: "SaveAvatarButton")
       
       Spacer().frame(height: 10)
       
-      Button(action: { self.getMyProfile() }) {
+      Button(action: getMyProfile) {
         Text("Get my profile")
           .modifier(RoundedButtonModifier(backgroundColor: Color.blue))
       }
+      .accessibility(identifier: "GetMyProfileButton")
       
       Spacer().frame(height: 10)
       
-      Button(action: { self.logoutButtonTapped() }) {
+      Button(action: logoutButtonTapped) {
         Text("Log out")
           .modifier(RoundedButtonModifier(backgroundColor: Color.red))
       }
+      .accessibility(identifier: "LogOutButton")
+      
+      Spacer().frame(height: 10)
+      
+      Button(action: deleteAccountButtonTapped) {
+        Text("Delete Account")
+          .modifier(RoundedButtonModifier(backgroundColor: Color.purple))
+      }
+      .accessibility(identifier: "DeleteAccountButton")
     }
   }
   
   func logoutButtonTapped() {
     viewModel.logout()
+    ViewRouter.shared.currentRoot = .home
+  }
+  
+  func deleteAccountButtonTapped() {
+    viewModel.deleteAccount()
     ViewRouter.shared.currentRoot = .home
   }
   

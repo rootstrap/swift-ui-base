@@ -12,13 +12,13 @@ struct User: Codable {
   var id: Int
   var username: String
   var email: String
-  var image: URL?
+  var imageURL: URL?
   
   private enum CodingKeys: String, CodingKey {
     case id
     case username
     case email
-    case image = "profile_picture"
+    case imageURL = "profile_picture"
   }
   
   init?(dictionary: [String: Any]) {
@@ -33,6 +33,15 @@ struct User: Codable {
     self.id = id
     self.username = username
     self.email = email
-    self.image = URL(string: dictionary[CodingKeys.image.rawValue] as? String ?? "")
+    self.imageURL = URL(
+      string: dictionary[CodingKeys.imageURL.rawValue] as? String ?? ""
+    )
+  }
+  
+  init(id: Int, username: String, email: String, imageURL: URL? = nil) {
+    self.id = id
+    self.username = username
+    self.email = email
+    self.imageURL = imageURL
   }
 }

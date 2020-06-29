@@ -20,27 +20,27 @@ enum ValidationType {
 
 extension String {
   var isAlphanumericWithNoSpaces: Bool {
-    return rangeOfCharacter(from: CharacterSet.alphanumerics.inverted) == nil
+    rangeOfCharacter(from: CharacterSet.alphanumerics.inverted) == nil
   }
   
   var hasPunctuationCharacters: Bool {
-    return rangeOfCharacter(from: CharacterSet.punctuationCharacters) != nil
+    rangeOfCharacter(from: CharacterSet.punctuationCharacters) != nil
   }
   
   var hasNumbers: Bool {
-    return rangeOfCharacter(from: CharacterSet(charactersIn: "0123456789")) != nil
-  }
-  
-  var length: Int {
-    return count
+    rangeOfCharacter(from: CharacterSet(charactersIn: "0123456789")) != nil
   }
   
   var localized: String {
-    return self.localize()
+    localize()
+  }
+  
+  var withNoSpaces: String {
+    filter { !$0.isWhitespace }
   }
   
   func localize(comment: String = "") -> String {
-    return NSLocalizedString(self, comment: comment)
+    NSLocalizedString(self, comment: comment)
   }
   
   var validFilename: String {
@@ -76,7 +76,7 @@ extension String {
   }
   
   func isInteger() -> Bool {
-    return Int(self) != nil
+    Int(self) != nil
   }
   
   func isPhoneNumber() -> Bool {

@@ -34,11 +34,13 @@ struct TextFieldView: View {
           SecureField("", text: $fieldData.value)
             .foregroundColor(.darkGray)
             .autocapitalization(.none)
+            .accessibility(identifier: "\(fieldData.title.withNoSpaces)TextField")
         } else {
           TextField("", text: $fieldData.value)
             .foregroundColor(.darkGray)
             .autocapitalization(.none)
             .opacity(0.8)
+            .accessibility(identifier: "\(fieldData.title.withNoSpaces)TextField")
         }
       }
       

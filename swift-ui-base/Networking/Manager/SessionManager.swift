@@ -10,7 +10,7 @@ import UIKit
 
 class SessionManager: NSObject {
   
-  static private let userDefaultSessionKey = "ios-base-session"
+  static private let userDefaultSessionKey = "swift-ui-base-session"
   
   static var currentSession: Session? {
     get {
