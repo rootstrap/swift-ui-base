@@ -43,7 +43,7 @@ class NetworkMocker {
       return HttpResponse.ok(.json(json as AnyObject))
     }
     
-    switch method  {
+    switch method {
     case .GET: server.GET[url] = response
     case .POST: server.POST[url] = response
     case .DELETE: server.DELETE[url] = response
