@@ -38,11 +38,15 @@ class ios_baseUITests: XCTestCase {
     
     app.type(text: "automation@test", on: "EmailTextField")
     
+    app.dismissKeyboard()
+    
     app.type(
       text: "holahola",
       on: "PasswordTextField",
       isSecure: true
     )
+    
+    app.dismissKeyboard()
     XCTAssertFalse(signUpButton.isEnabled)
     
     app.type(
@@ -54,6 +58,8 @@ class ios_baseUITests: XCTestCase {
     
     app.type(text: ".com", on: "EmailTextField")
     XCTAssert(signUpButton.isEnabled)
+    
+    app.dismissKeyboard()
     
     app.type(
       text: "holahol",
