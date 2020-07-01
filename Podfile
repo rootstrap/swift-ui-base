@@ -8,12 +8,11 @@ target 'swift-ui-base' do
 
   target 'swift-ui-baseTests' do
     inherit! :complete
-    # Pods for testing
   end
 
   target 'swift-ui-baseUITests' do
     inherit! :complete
-    # Pods for testing
+    pod 'Swifter', '~> 1.4.7'
   end
 
 end

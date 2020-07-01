@@ -1,16 +1,20 @@
 PODS:
   - Alamofire (5.2.1)
+  - Swifter (1.4.7)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0)
+  - Swifter (~> 1.4.7)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Swifter
 
 SPEC CHECKSUMS:
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  Swifter: 2327ef5d872c638aebab79646ce494af508b0c8f
 
-PODFILE CHECKSUM: 2adff1b7bf9178bd021c10a8c78e254011058ba5
+PODFILE CHECKSUM: 6f4c7e077f8655ff1363aa04d271fec4008c04a2
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.2
