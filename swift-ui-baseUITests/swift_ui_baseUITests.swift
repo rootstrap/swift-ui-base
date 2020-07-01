@@ -110,7 +110,7 @@ class ios_baseUITests: XCTestCase {
   func testSignInFailure() {
     app.launch()
     
-    networkMocker.stubLogIn(shouldSuceed: false)
+    networkMocker.stubLogIn(shouldSucceed: false)
     app.attemptSignIn(
       in: self,
       with: "automation@test.com",
