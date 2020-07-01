@@ -14,7 +14,7 @@
 		073CF2A824ABA11D00885A4D /* AuthenticationError.json in Resources */ = {isa = PBXBuildFile; fileRef = 073CF2A724ABA11D00885A4D /* AuthenticationError.json */; };
 		073CF2AC24ABA62C00885A4D /* LogOutSuccessfully.json in Resources */ = {isa = PBXBuildFile; fileRef = 073CF2AB24ABA62C00885A4D /* LogOutSuccessfully.json */; };
 		073CF2AE24ABA6B800885A4D /* LoginSuccessfully.json in Resources */ = {isa = PBXBuildFile; fileRef = 073CF2AD24ABA6B800885A4D /* LoginSuccessfully.json */; };
-		073CF2B424ABD09300885A4D /* NetowrkMockerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073CF2B324ABD09300885A4D /* NetowrkMockerExtension.swift */; };
+		073CF2B424ABD09300885A4D /* NetworkMockerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073CF2B324ABD09300885A4D /* NetworkMockerExtension.swift */; };
 		073CF2B624ABD33900885A4D /* GetProfileSuccessfully.json in Resources */ = {isa = PBXBuildFile; fileRef = 073CF2B524ABD33900885A4D /* GetProfileSuccessfully.json */; };
 		07415FE524181D8800486885 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07415FE424181D8800486885 /* SignUpView.swift */; };
 		07415FE9241832E700486885 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07415FE8241832E700486885 /* TextFieldView.swift */; };
@@ -87,7 +87,7 @@
 		073CF2A724ABA11D00885A4D /* AuthenticationError.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AuthenticationError.json; sourceTree = "<group>"; };
 		073CF2AB24ABA62C00885A4D /* LogOutSuccessfully.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LogOutSuccessfully.json; sourceTree = "<group>"; };
 		073CF2AD24ABA6B800885A4D /* LoginSuccessfully.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LoginSuccessfully.json; sourceTree = "<group>"; };
-		073CF2B324ABD09300885A4D /* NetowrkMockerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetowrkMockerExtension.swift; sourceTree = "<group>"; };
+		073CF2B324ABD09300885A4D /* NetworkMockerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMockerExtension.swift; sourceTree = "<group>"; };
 		073CF2B524ABD33900885A4D /* GetProfileSuccessfully.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GetProfileSuccessfully.json; sourceTree = "<group>"; };
 		07415FE424181D8800486885 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		07415FE8241832E700486885 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
@@ -501,7 +501,7 @@
 				0748BDA2249BEBE500D5DAF9 /* XCUIElementExtension.swift */,
 				0748BDA4249BEC1F00D5DAF9 /* XCTestCaseExtension.swift */,
 				073CF2A224AB9CD300885A4D /* NetworkMocker.swift */,
-				073CF2B324ABD09300885A4D /* NetowrkMockerExtension.swift */,
+				073CF2B324ABD09300885A4D /* NetworkMockerExtension.swift */,
 			);
 			path = "swift-ui-baseUITests";
 			sourceTree = "<group>";
@@ -848,7 +848,7 @@
 				0748BDA5249BEC1F00D5DAF9 /* XCTestCaseExtension.swift in Sources */,
 				07A64A1E2417E13B003C6753 /* swift_ui_baseUITests.swift in Sources */,
 				0748BDA1249BEBA400D5DAF9 /* XCUIApplicationExtension.swift in Sources */,
-				073CF2B424ABD09300885A4D /* NetowrkMockerExtension.swift in Sources */,
+				073CF2B424ABD09300885A4D /* NetworkMockerExtension.swift in Sources */,
 				073CF2A324AB9CD300885A4D /* NetworkMocker.swift in Sources */,
 				0748BDA3249BEBE500D5DAF9 /* XCUIElementExtension.swift in Sources */,
 			);

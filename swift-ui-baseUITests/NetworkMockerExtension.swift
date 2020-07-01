@@ -1,5 +1,5 @@
 //
-//  NetowrkMockerExtension.swift
+//  NetworkMockerExtension.swift
 //  swift-ui-baseUITests
 //
 //  Created by Germán Stábile on 6/30/20.
@@ -10,9 +10,8 @@ import Foundation
 
 extension NetworkMocker {
   
-  func stubSignUp(shouldSuceed: Bool = true) {
-    let responseFileName = shouldSuceed ?
-      "SignUpSuccessfully" : "AuthenticationError"
+  func stubSignUp(shouldSucceed: Bool = true) {
+    let responseFileName = shouldSucceed ? "SignUpSuccessfully" : "AuthenticationError"
     
     setupStub(
       url: "/users/",
@@ -37,9 +36,8 @@ extension NetworkMocker {
     )
   }
   
-  func stubLogIn(shouldSuceed: Bool = true) {
-    let responseFilename = shouldSuceed ?
-      "LoginSuccessfully" : "AuthenticationError"
+  func stubLogIn(shouldSucceed: Bool = true) {
+    let responseFilename = shouldSucceed ? "LoginSuccessfully" : "AuthenticationError"
     
     setupStub(
       url: "/users/sign_in",

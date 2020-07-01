@@ -34,9 +34,12 @@ class NetworkMocker {
     method: HTTPMethod = .GET
   ) {
     let testBundle = Bundle(for: type(of: self))
-    let filePath = testBundle.path(forResource: responseFilename, ofType: "json")
-    let fileUrl = URL(fileURLWithPath: filePath!)
-    let data = try! Data(contentsOf: fileUrl, options: .uncached)
+    let filePath = testBundle.path(forResource: responseFilename, ofType: "json") ?? ""
+    let fileUrl = URL(fileURLWithPath: filePath)
+    guard let data = try? Data(contentsOf: fileUrl, options: .uncached) else {
+      fatalError("Could not parse mocked data")
+      return
+    }
     let json = dataToJSON(data: data)
     
     let response: ((HttpRequest) -> HttpResponse) = { _ in
