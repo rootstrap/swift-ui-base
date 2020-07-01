@@ -14,21 +14,13 @@ extension XCUIApplication {
     let field = fields[fieldName]
     field.tap()
     field.typeText(text)
-//    if isSecure {
-//      UIPasteboard.general.string = text
-//      field.doubleTap()
-//      menuItems["Paste"].tap()
-//    } else {
-//      field.tap()
-//      field.typeText(text)
-//    }
   }
   
   func dismissKeyboard() {
-//    //ugly hack to dismiss keyboard
-//    let field = textFields.firstMatch
-//    field.tap()
-//    field.typeText("\n")
+    //ugly hack to dismiss keyboard
+    let field = textFields.firstMatch
+    field.tap()
+    field.typeText("\n")
   }
   
   func clearText(on fieldName: String) {
