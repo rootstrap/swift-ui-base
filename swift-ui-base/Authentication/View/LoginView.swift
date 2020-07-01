@@ -18,15 +18,14 @@ struct LoginView: View {
       
       VStack {
         Text("Sign In")
-          .modifier(TitleModifier())
+          .modifier(MainTitle())
         
         Spacer()
         
-        TextFieldView(fieldData: $viewModel.emailData)
-        
-        Spacer().frame(height: 30)
-        
-        TextFieldView(fieldData: $viewModel.passwordData)
+        VStack(spacing: 30) {
+          TextFieldView(fieldData: $viewModel.emailData)
+          TextFieldView(fieldData: $viewModel.passwordData)
+        }
         
         Spacer()
         

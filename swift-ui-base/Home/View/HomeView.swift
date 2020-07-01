@@ -16,7 +16,7 @@ struct HomeView: View {
         Spacer()
         
         Text("Welcome to RS SwiftUI base!")
-          .modifier(TitleModifier())
+          .modifier(MainTitle())
         
         Spacer()
         
@@ -27,11 +27,9 @@ struct HomeView: View {
             .background(Color.blue)
             .foregroundColor(.white)
             .cornerRadius(8)
+            .padding(.bottom, 20)
         }
         .accessibility(identifier: "GoToLoginLink")
-        
-        Spacer()
-          .frame(maxHeight: 20)
         
         NavigationLink(destination: SignUpView()) {
           Text("Don't have an account? Lets create one! ►")
