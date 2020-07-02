@@ -11,17 +11,23 @@ import XCTest
 class ios_baseUITests: XCTestCase {
   
   var app: XCUIApplication!
+  let networkMocker = NetworkMocker()
   
   override func setUp() {
     super.setUp()
     app = XCUIApplication()
     app.launchArguments = ["Automation Test"]
+
+    networkMocker.setUp()
+  }
+  
+  override func tearDown() {
+    super.tearDown()
+    networkMocker.tearDown()
   }
   
   func testCreateAccountValidations() {
     app.launch()
-    
-    app.deleteAccountIfNeeded(in: self)
     
     app.buttons["GoToSignUpLink"].tap()
     
@@ -32,11 +38,15 @@ class ios_baseUITests: XCTestCase {
     
     app.type(text: "automation@test", on: "EmailTextField")
     
+    app.dismissKeyboard()
+    
     app.type(
       text: "holahola",
       on: "PasswordTextField",
       isSecure: true
     )
+    
+    app.dismissKeyboard()
     XCTAssertFalse(signUpButton.isEnabled)
     
     app.type(
@@ -49,6 +59,8 @@ class ios_baseUITests: XCTestCase {
     app.type(text: ".com", on: "EmailTextField")
     XCTAssert(signUpButton.isEnabled)
     
+    app.dismissKeyboard()
+    
     app.type(
       text: "holahol",
       on: "ConfirmPasswordTextField",
@@ -60,10 +72,8 @@ class ios_baseUITests: XCTestCase {
   func testAccountCreation() {
     app.launch()
     
-    app.deleteAccountIfNeeded(in: self)
+    networkMocker.stubSignUp()
     
-    //sleep so the server gets time to delete the account
-    sleep(5)
     app.attemptSignUp(
       in: self,
       with: "automation@test.com",
@@ -74,13 +84,19 @@ class ios_baseUITests: XCTestCase {
     
     waitFor(element: logOutButton, timeOut: 15)
     
+    networkMocker.stubLogOut()
+    
     logOutButton.tap()
+    
+    networkMocker.stubLogIn()
     
     app.attemptSignIn(
       in: self,
       with: "automation@test.com",
       password: "holahola"
     )
+    
+    networkMocker.stubGetProfile()
     
     let getMyProfile = app.buttons["GetMyProfileButton"]
     waitFor(element: getMyProfile, timeOut: 10)
@@ -92,6 +108,7 @@ class ios_baseUITests: XCTestCase {
       
       alert.buttons.allElementsBoundByIndex.first?.tap()
       
+      networkMocker.stubDeleteAccount()
       app.deleteAccountIfNeeded(in: self)
     }
   }
@@ -99,8 +116,7 @@ class ios_baseUITests: XCTestCase {
   func testSignInFailure() {
     app.launch()
     
-    app.deleteAccountIfNeeded(in: self)
-    
+    networkMocker.stubLogIn(shouldSucceed: false)
     app.attemptSignIn(
       in: self,
       with: "automation@test.com",
@@ -109,7 +125,6 @@ class ios_baseUITests: XCTestCase {
     
     if let alert = app.alerts.allElementsBoundByIndex.first {
       waitFor(element: alert, timeOut: 2)
-      XCTAssertTrue(alert.label == "Error")
       
       alert.buttons.allElementsBoundByIndex.first?.tap()
     }
@@ -120,8 +135,6 @@ class ios_baseUITests: XCTestCase {
   
   func testSignInValidations() {
     app.launch()
-    
-    app.deleteAccountIfNeeded(in: self)
     
     app.buttons["GoToLoginLink"].tap()
     
