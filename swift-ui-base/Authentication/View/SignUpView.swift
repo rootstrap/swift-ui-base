@@ -21,7 +21,7 @@ struct SignUpView: View {
         
         Spacer()
         
-        VStack(spacing: 30) {
+        VStack(spacing: 10) {
           TextFieldView(fieldData: $viewModel.emailData)
           TextFieldView(fieldData: $viewModel.passwordData)
           TextFieldView(fieldData: $viewModel.confirmPasswordData)
