@@ -22,7 +22,7 @@ struct LoginView: View {
         
         Spacer()
         
-        VStack() {
+        VStack(spacing: 20) {
           TextFieldView(fieldData: $viewModel.emailData)
           TextFieldView(fieldData: $viewModel.passwordData)
         }

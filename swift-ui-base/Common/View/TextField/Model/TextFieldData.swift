@@ -20,7 +20,7 @@ final class TextFieldData: ObservableObject {
   var title: String
   var isSecure = false
 
-  var isValid = true//@Published var isValid = true
+  var isValid = true
   
   var isEmpty: Bool {
     return value.isEmpty

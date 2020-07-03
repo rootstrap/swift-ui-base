@@ -33,6 +33,7 @@ struct TextFieldView: View {
           TextField("", text: $fieldData.value)
             .foregroundColor(.darkGray)
             .autocapitalization(.none)
+            .opacity(0.8)
             .accessibility(identifier: "\(fieldData.title.withNoSpaces)TextField")
         }
       }
@@ -46,6 +47,7 @@ struct TextFieldView: View {
       
       Text(fieldData.errorMessage)
         .frame(maxWidth: .infinity, alignment: .leading)
+        .offset(CGSize(width: 0, height: -5))
         .font(.footnote)
         .foregroundColor(.errorRed)
         .opacity(!fieldData.isEmpty && !fieldData.isValid ? 1 : 0)
