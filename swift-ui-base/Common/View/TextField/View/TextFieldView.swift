@@ -9,26 +9,20 @@
 import SwiftUI
 
 struct TextFieldView: View {
-  
+
   @Binding var fieldData: TextFieldData
   
   var body: some View {
     VStack {
-      if !fieldData.value.isEmpty {
+      ZStack {
         Text(fieldData.title)
           .frame(maxWidth: .infinity, alignment: .leading)
-          .font(.subheadline)
+          .font(Font.headline.weight(.regular))
           .foregroundColor(.lightGray)
-      }
-      
-      ZStack {
-        if fieldData.value.isEmpty {
-          Text(fieldData.title)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .font(Font.headline.weight(.regular))
-            .foregroundColor(.lightGray)
-            .opacity(0.7)
-        }
+          .offset(CGSize(width: 0, height: fieldData.isEmpty ? 0 : -30))
+          .opacity(fieldData.isEmpty ? 0.7 : 1)
+          .animation(.easeOut(duration: 0.2))
+          .scaleEffect(fieldData.isEmpty ? 1 : 0.8, anchor: .bottomLeading)
         
         if fieldData.isSecure {
           SecureField("", text: $fieldData.value)
@@ -47,16 +41,17 @@ struct TextFieldView: View {
       Rectangle()
         .frame(maxWidth: .infinity, maxHeight: 1)
         .foregroundColor(
-          !fieldData.isValid && fieldData.hasTyped ? .errorRed : .lightGray
+          !fieldData.isEmpty && !fieldData.isValid ? .errorRed : .lightGray
         )
         .opacity(0.5)
       
-      if !fieldData.isValid && fieldData.hasTyped {
-        Text(fieldData.errorMessage)
-          .frame(maxWidth: .infinity, alignment: .leading)
-          .font(.footnote)
-          .foregroundColor(.errorRed)
-      }
+      Text(fieldData.errorMessage)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .offset(CGSize(width: 0, height: -5))
+        .font(.footnote)
+        .foregroundColor(.errorRed)
+        .opacity(!fieldData.isEmpty && !fieldData.isValid ? 1 : 0)
+        .animation(.easeOut(duration: 0.2))
     }
     .padding(.horizontal, 20)
   }
@@ -69,7 +64,6 @@ struct TextFieldView_Previews: PreviewProvider {
       title: "Email",
       value: "testy@testerson",
       validationType: .email,
-      hasTyped: true,
       errorMessage: "Please enter a valid email"
     )
     
