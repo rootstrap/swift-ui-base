@@ -1,13 +1,13 @@
 import Foundation
 
-let baseProjectName = "ios-base"
+let baseProjectName = "swift-ui-base"
 var projectName = "RSDemoProject"
 let baseDomain = "com.rootstrap"
 var bundleDomain = baseDomain
 let baseCompany = "Rootstrap Inc."
 var companyName = baseCompany
 
-let whiteList: [String] = [".DS_Store", "UserInterfaceState.xcuserstate", "init.swift"]
+let whiteList: [String] = [".DS_Store", "UserInterfaceState.xcuserstate", "init.swift", "init"]
 let fileManager = FileManager.default
 var currentFolder: String {
   return fileManager.currentDirectoryPath
