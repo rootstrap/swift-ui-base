@@ -17,7 +17,7 @@ This template comes with:
 
 ## How to use
 1. Clone repo.
-2. Run `swift init.swift` from the recently created folder.
+2. Run `./init` from the recently created folder.
 3. Initialize a new git repo and add your remote url.
 4. Done!
 
