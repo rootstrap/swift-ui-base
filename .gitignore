@@ -48,3 +48,6 @@ fastlane/test_output
 iOSInjectionProject/
 
 **/.DS_Store
+
+# Private keys
+**/ThirdPartyKeys.plist
