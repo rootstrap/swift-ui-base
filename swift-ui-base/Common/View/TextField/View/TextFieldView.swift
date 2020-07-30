@@ -18,7 +18,7 @@ struct TextFieldView: View {
         Text(fieldData.title)
           .frame(maxWidth: .infinity, alignment: .leading)
           .font(Font.headline.weight(.regular))
-          .foregroundColor(.lightGray)
+          .foregroundColor(.cadetBlue)
           .offset(CGSize(width: 0, height: fieldData.isEmpty ? 0 : -30))
           .opacity(fieldData.isEmpty ? 0.7 : 1)
           .animation(.easeOut(duration: 0.2))
@@ -41,7 +41,7 @@ struct TextFieldView: View {
       Rectangle()
         .frame(maxWidth: .infinity, maxHeight: 1)
         .foregroundColor(
-          !fieldData.isEmpty && !fieldData.isValid ? .errorRed : .lightGray
+          !fieldData.isEmpty && !fieldData.isValid ? .errorRed : .cadetBlue
         )
         .opacity(0.5)
       
