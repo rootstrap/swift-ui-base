@@ -11,7 +11,8 @@ import Foundation
 class ConfigurationManager: NSObject {
 
   class func getValue(
-    for key: String, on propertyList: String = "ThirdPartyKeys"
+    for key: String,
+    on propertyList: String = "ThirdPartyKeys"
   ) -> String? {
     if
       let path = Bundle.main.path(forResource: propertyList, ofType: "plist"),
